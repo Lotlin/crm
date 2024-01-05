@@ -1,0 +1,108 @@
+.error {
+  display: none;
+  position: absolute;
+  top: 132px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  height: 350px;
+  background-color: #f4f2ff;
+  box-shadow: 0px 0px 6px 0px #00000040;
+  border-radius: 6px;
+}
+
+.error--visible {
+  display: inline-block;
+}
+
+.error__close-button {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  top: 26px;
+  right: 29px;
+  background: url(../img/cross.svg) no-repeat;
+  background-size: contain;
+  border: 1px solid transparent;
+}
+
+.error__close-button::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #6d5bd0;
+  opacity: 0;
+}
+
+.error__close-button:hover::after {
+  opacity: 0.4;
+}
+
+.error__close-button:focus,
+.error__close-button:active {
+  outline: 1px solid #6d5bd0;
+} 
+
+.error__img {
+  position: absolute;
+  display: block;
+  top: 110px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90px;
+  height: 90px;
+}
+
+.error__title {
+  position: absolute;
+  top: 236px;
+  left: 0;
+  right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  color: #6e6893;
+  letter-spacing: 1.8px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1300px) {
+  .error {
+    top: 10.15vw;
+    left: 17vw;
+    width: 26.92vw;
+    height: 26.92vw;
+  }
+  
+  .error__close-button {
+    width: 1.54vw;
+    height: 1.54vw;
+    top: 2vw;
+    right: 2.23vw;
+  }
+    
+  .error__img-wrapper {
+    margin-bottom: 2.54vw;
+    padding-top: 8.38vw;
+  }
+  
+  .error__img {
+    width: 6.92vw;
+    height: 6.92vw;
+  }
+
+  .error__title {
+    font-size: 1.38vw;
+  }  
+}
