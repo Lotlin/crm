@@ -1,4 +1,4 @@
-import {addGoodButton} from '../getElements';
+import {addGoodButton, mainTable} from '../getElements';
 import {
   addGoodModal, addGoodModalCloseButton, addGoodModalOverlay,
   goodTotalPrice, addGoodModalForm, addGoodModalFormDiscountCheckbox,
@@ -6,6 +6,8 @@ import {
 } from './addGoodModalGetElements';
 import {currency} from '../data';
 import {showAddingGoodTotalPrice} from './addGoodModalRender';
+import {createNewGood} from './addGoodModalService';
+import {renderRow} from '../render';
 
 
 const openAddGoodModal = async () => {
@@ -44,9 +46,14 @@ const addGoodModalFormControl = () => {
 
   addGoodModalForm.addEventListener('submit', e => {
     e.preventDefault();
-    console.log(1);
-    // const formData = new FormData(e.target);
-    // const newGoodData = Object.fromEntries(formData);
+
+    const formData = new FormData(e.target);
+    const newGoodData = Object.fromEntries(formData);
+    const newGood = createNewGood(newGoodData);
+    console.log('newGood: ', newGood);
+    const newRow = renderRow(newGood);
+    mainTable.appendChild(newRow);
+    addGoodModal.classList.remove('add-good--visible');
   });
 };
 
