@@ -5,8 +5,10 @@ import {
   addGoodModalFormDiscountInput,
 } from './addGoodModalGetElements';
 import {currency} from '../data';
+import {showAddingGoodTotalPrice} from './addGoodModalRender';
 
-const openAddGoodModal = () => {
+
+const openAddGoodModal = async () => {
   addGoodButton.addEventListener('click', () => {
     addGoodModal.classList.add('add-good--visible');
     goodTotalPrice.textContent = `${currency} 0`;
@@ -42,6 +44,7 @@ const addGoodModalFormControl = () => {
 
   addGoodModalForm.addEventListener('submit', e => {
     e.preventDefault();
+    console.log(1);
     // const formData = new FormData(e.target);
     // const newGoodData = Object.fromEntries(formData);
   });
@@ -51,4 +54,5 @@ export const addGoodModalControl = () => {
   openAddGoodModal();
   closeAddGoodModal();
   addGoodModalFormControl();
+  showAddingGoodTotalPrice();
 };

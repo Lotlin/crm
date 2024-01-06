@@ -1,20 +1,8 @@
-/*
-const getScreenSize = () => {
-  const screenHeight = screen.height;
-  const screenWidth = screen.width;
+export const getDiscountSum = (priceInputValue, discountInputValue) =>
+  (Number(priceInputValue) * Number(discountInputValue)) / 100;
 
-  return {
-    screenHeight,
-    screenWidth,
-  };
-};
+export const getDiscountedPrice = (priceInputValue, dicsountSum) =>
+  Number(priceInputValue) - Number(dicsountSum);
 
-
-export const getPictureWindowPosition = (pictureWidth, pictureHeigth) => {
-  const top = (getScreenSize().screenHeight - pictureHeigth) / 2;
-  const left = (getScreenSize().screenWidth - pictureWidth) / 2;
-  const result = `top=${top}, left=${left}`;
-
-  return result;
-};
-*/
+export const getTotalPrice = (discountedPrice, amountInputValue) =>
+  discountedPrice * Number(amountInputValue);
