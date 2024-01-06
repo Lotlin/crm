@@ -1,13 +1,14 @@
 import {namesOfTableColums, currency} from './data';
 import {parsingNestedObject} from './util';
-import {mainTable} from './getElements';
-import {calculateTotalGoodsCost} from './service';
+import {mainTable, totalPriceElem} from './getElements';
+import {calculateTotalGoodsCost, getAllGoodsTotalPrice} from './service';
 
 const renderTotalGoodCost = (elem, amountStr, priceStr) => {
   const calculatedTotalGoodsCost = calculateTotalGoodsCost(amountStr, priceStr);
   elem.insertAdjacentHTML(
       'beforeend',
-      `<td>${currency}${calculatedTotalGoodsCost}</td>`,
+      // eslint-disable-next-line max-len
+      `<td class='goods__table-total-price'>${currency}${calculatedTotalGoodsCost}</td>`,
   );
 };
 
@@ -65,6 +66,7 @@ const renderDelButton = (elem) => {
 
 export const renderRow = (obj) => {
   const tableRow = document.createElement('tr');
+  tableRow.className = 'good';
 
   const tableColumsAmount = namesOfTableColums.length;
   const keys = Object.keys(obj);
@@ -114,3 +116,7 @@ export const renderMainGoods = (arr) => {
   });
 };
 
+export const showAllGoodsTotalPrice = () => {
+  const totalPrice = getAllGoodsTotalPrice();
+  totalPriceElem.textContent = `${currency}${totalPrice}`;
+};

@@ -1,5 +1,8 @@
 /* eslint-disable max-len */
 export const currency = '$';
+// used in getAllGoodsTotalPrice();
+export const currencyNumOfCharscters = 1;
+
 
 export const namesOfTableColums = [
   'id', 'title', 'category', 'units', 'count', 'price', 'image', 'images',

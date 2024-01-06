@@ -42,8 +42,8 @@ const addGoodModalFormControl = () => {
 
   addGoodModalForm.addEventListener('submit', e => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const newGoodData = Object.fromEntries(formData);
+    // const formData = new FormData(e.target);
+    // const newGoodData = Object.fromEntries(formData);
   });
 };
 
