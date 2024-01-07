@@ -7,7 +7,7 @@ import {
 import {currency} from '../data';
 import {showAddingGoodTotalPrice} from './addGoodModalRender';
 import {createNewGood} from './addGoodModalService';
-import {renderRow} from '../render';
+import {renderRow, showAllGoodsTotalPrice} from '../render';
 import {getFormData} from '../util';
 
 
@@ -55,6 +55,7 @@ const addGoodModalFormControl = () => {
     const newGood = createNewGood(newGoodData);
     const newRow = renderRow(newGood);
     mainTable.appendChild(newRow);
+    showAllGoodsTotalPrice();
     e.target.reset();
     closeAddGoodModal('addGood');
   });
