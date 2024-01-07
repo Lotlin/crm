@@ -7,6 +7,14 @@ export const parsingNestedObject = (obj) => {
 
   return valArr;
 };
+
+export const getFormData = (tableElem) => {
+  const formData = new FormData(tableElem);
+  const tableData = Object.fromEntries(formData);
+
+  return tableData;
+};
+
 /*
 const getScreenSize = () => {
   const screenHeight = screen.height;

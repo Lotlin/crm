@@ -8,6 +8,7 @@ import {currency} from '../data';
 import {showAddingGoodTotalPrice} from './addGoodModalRender';
 import {createNewGood} from './addGoodModalService';
 import {renderRow} from '../render';
+import {getFormData} from '../util';
 
 
 const openAddGoodModal = async () => {
@@ -17,7 +18,7 @@ const openAddGoodModal = async () => {
   });
 };
 
-const closeAddGoodModal = () => {
+const closeAddGoodModal = (addGood = false) => {
   addGoodModalCloseButton.addEventListener('click', () => {
     addGoodModal.classList.remove('add-good--visible');
   });
@@ -28,6 +29,10 @@ const closeAddGoodModal = () => {
       addGoodModal.classList.remove('add-good--visible');
     }
   });
+
+  if (addGood) {
+    addGoodModal.classList.remove('add-good--visible');
+  }
 };
 
 const discountInputControl = () => {
@@ -46,14 +51,12 @@ const addGoodModalFormControl = () => {
 
   addGoodModalForm.addEventListener('submit', e => {
     e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const newGoodData = Object.fromEntries(formData);
+    const newGoodData = getFormData(e.target);
     const newGood = createNewGood(newGoodData);
-    console.log('newGood: ', newGood);
     const newRow = renderRow(newGood);
     mainTable.appendChild(newRow);
-    addGoodModal.classList.remove('add-good--visible');
+    e.target.reset();
+    closeAddGoodModal('addGood');
   });
 };
 

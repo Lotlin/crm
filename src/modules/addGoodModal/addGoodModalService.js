@@ -14,11 +14,13 @@ export const createNewGood = (newGoodData) => {
   const discountSize = getDiscountSum(fullPrice, newGoodData.discountInput);
   const discountedPrice = getDiscountedPrice(fullPrice, discountSize);
   const totalPrice = getTotalPrice(discountedPrice, count);
+  // main table doesn't have column for discountedPrice
+  const price = discountedPrice;
 
   const image = newGoodData.images;
 
   const newGood = {
-    id, title, category, units, count, discountedPrice, totalPrice, image,
+    id, title, category, units, count, price, totalPrice, image,
   };
 
   return newGood;
