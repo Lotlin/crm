@@ -15,7 +15,6 @@ export const getFormData = (tableElem) => {
   return tableData;
 };
 
-/*
 const getScreenSize = () => {
   const screenHeight = screen.height;
   const screenWidth = screen.width;
@@ -33,4 +32,3 @@ export const getPictureWindowPosition = (pictureWidth, pictureHeigth) => {
 
   return result;
 };
-*/

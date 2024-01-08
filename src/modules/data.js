@@ -3,10 +3,12 @@ export const currency = '$';
 // used in getAllGoodsTotalPrice();
 export const currencyNumOfCharscters = 1;
 
-
 export const namesOfTableColums = [
   'id', 'title', 'category', 'units', 'count', 'price', 'image', 'images',
 ];
+
+export const mainTableictureWidth = 600;
+export const mainTableictureHeight = 600;
 
 export const goods = [
   {
@@ -17,7 +19,7 @@ export const goods = [
     'count': 3,
     'price': 27000,
     'images': {
-      'small': 'img/smrtxiaomi11t-m.jpg',
+      'small': 'img/goods/dishwasher.jpg',
       'big': 'img/smrtxiaomi11t-b.jpg',
     },
   },
@@ -36,7 +38,7 @@ export const goods = [
     'units': 'шт',
     'count': 6,
     'price': 3000,
-    'images': 'img/tvboxmecool-m.jpg',
+    'images': 'img/goods/oven.jpg',
   },
   {
     'id': 246258248,
