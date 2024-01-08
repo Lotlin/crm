@@ -1,4 +1,4 @@
-import {getModalElements} from './addGoodModalGetElements';
+import {getAddGoodModalElements} from './addGoodModalGetElements';
 import {
   getDiscountSum, getDiscountedPrice, getTotalPrice,
 } from './addGoodModalUtil';
@@ -6,11 +6,11 @@ import {currency} from '../data';
 
 
 export const showAddingGoodTotalPrice = () => {
-  const priceInput = getModalElements().price;
-  const amountInput = getModalElements().count;
-  const discountInput = getModalElements().discount;
-  const form = getModalElements().form;
-  const goodTotalPrice = getModalElements().totalPrice;
+  const priceInput = getAddGoodModalElements().price;
+  const amountInput = getAddGoodModalElements().count;
+  const discountInput = getAddGoodModalElements().discount;
+  const form = getAddGoodModalElements().form;
+  const goodTotalPrice = getAddGoodModalElements().totalPrice;
 
   const watchedElements = [
     priceInput.name,

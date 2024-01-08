@@ -11,7 +11,7 @@ import {renderRow, showAllGoodsTotalPrice} from '../render';
 import {getFormData} from '../util';
 
 
-const openAddGoodModal = async () => {
+const openAddGoodModal = () => {
   addGoodButton.addEventListener('click', () => {
     addGoodModal.classList.add('add-good--visible');
     goodTotalPrice.textContent = `${currency} 0`;

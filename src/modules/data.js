@@ -10,6 +10,8 @@ export const namesOfTableColums = [
 export const mainTableictureWidth = 600;
 export const mainTableictureHeight = 600;
 
+export const getGoodsUrl = 'http://localhost:3000/api/goods';
+
 export const goods = [
   {
     'id': 253842678,

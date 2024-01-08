@@ -1,17 +1,8 @@
-export const addGoodModal = document.querySelector('.add-good');
-export const addGoodModalCloseButton =
-  addGoodModal.querySelector('.add-good__close-button');
-export const addGoodModalOverlay =
-  addGoodModal.querySelector('.add-good__overlay');
-export const goodTotalPrice =
-  addGoodModal.querySelector('.add-good__total-num');
-export const addGoodModalForm = addGoodModal.querySelector('.add-good-form');
-export const addGoodModalFormDiscountCheckbox =
-  addGoodModalForm.querySelector('.add-good-form__checkbox-input');
-export const addGoodModalFormDiscountInput =
-  addGoodModalForm.querySelector('.form__discount-input');
+export const editGoodModal = document.querySelector('.edit-good');
 
-export const getAddGoodModalElements = () => {
+
+/*
+export const getModalElements = () => {
   const overlay = document.querySelector('.add-good__container');
   const closeButton = overlay.querySelector('.add-good__close-button');
   const form = overlay.querySelector('.add-good-form');
@@ -45,3 +36,4 @@ export const getAddGoodModalElements = () => {
     previewImg,
   };
 };
+*/

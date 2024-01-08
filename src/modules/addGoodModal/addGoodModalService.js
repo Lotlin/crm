@@ -25,3 +25,4 @@ export const createNewGood = (newGoodData) => {
 
   return newGood;
 };
+

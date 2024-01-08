@@ -1,12 +1,12 @@
 import {deleteGood, showGoodPicture, editGood} from './service';
-import {renderMainGoods, showAllGoodsTotalPrice} from './render';
-import {goods, mainTableictureWidth, mainTableictureHeight} from './data';
+import {loadGoods, showAllGoodsTotalPrice} from './render';
+import {mainTableictureWidth, mainTableictureHeight} from './data';
 
 import {mainTable} from './getElements';
 
 
 export const mainTableControl = () => {
-  renderMainGoods(goods);
+  loadGoods();
   deleteGood();
   showAllGoodsTotalPrice();
   showGoodPicture(mainTable, mainTableictureWidth, mainTableictureHeight);

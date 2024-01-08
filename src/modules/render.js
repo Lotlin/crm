@@ -1,7 +1,9 @@
-import {namesOfTableColums, currency} from './data';
+import {namesOfTableColums, currency, getGoodsUrl} from './data';
 import {parsingNestedObject} from './util';
 import {mainTable, totalPriceElem} from './getElements';
-import {calculateTotalGoodsCost, getAllGoodsTotalPrice} from './service';
+import {
+  calculateTotalGoodsCost, getAllGoodsTotalPrice, fetchRequest,
+} from './service';
 
 const renderTotalGoodCost = (elem, amountStr, priceStr) => {
   const calculatedTotalGoodsCost = calculateTotalGoodsCost(amountStr, priceStr);
@@ -119,4 +121,10 @@ export const renderMainGoods = (arr) => {
 export const showAllGoodsTotalPrice = () => {
   const totalPrice = getAllGoodsTotalPrice();
   totalPriceElem.textContent = `${currency}${totalPrice}`;
+};
+
+export const loadGoods = async () => {
+  await fetchRequest(getGoodsUrl, {
+    callback: renderMainGoods,
+  });
 };
