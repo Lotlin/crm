@@ -21,17 +21,20 @@ const openAddGoodModal = async () => {
 const closeAddGoodModal = (addGood = false) => {
   addGoodModalCloseButton.addEventListener('click', () => {
     addGoodModal.classList.remove('add-good--visible');
+    addGoodModalForm.reset();
   });
 
   addGoodModalOverlay.addEventListener('click', e => {
     const target = e.target;
     if (target === addGoodModalOverlay) {
       addGoodModal.classList.remove('add-good--visible');
+      addGoodModalForm.reset();
     }
   });
 
   if (addGood) {
     addGoodModal.classList.remove('add-good--visible');
+    addGoodModalForm.reset();
   }
 };
 

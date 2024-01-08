@@ -2,6 +2,8 @@
 @import "fonts.css";
 @import "global.css";
 @import "goods.css";
+@import "modal-good.css";
 @import "add-good.css";
-@import "change-good.css";
+@import "edit-good.css";
+@import "form.css";
 @import "err.css";

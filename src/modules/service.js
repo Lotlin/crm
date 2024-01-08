@@ -1,7 +1,7 @@
-// import {getPictureWindowPosition} from './util';
 import {mainTable, getGoodsTotalPrices} from './getElements';
 import {goods, currencyNumOfCharscters} from './data';
 import {showAllGoodsTotalPrice} from './render';
+import {getPictureWindowPosition} from './util';
 
 export const calculateTotalGoodsCost = (amountStr, priceStr) => {
   const result = Number(amountStr) * Number(priceStr);
@@ -39,19 +39,29 @@ export const deleteGood = () => {
   });
 };
 
-/*
-export const showGoodPicture = (mainTable, pictureWidth, pictureHeigth) => {
+export const showGoodPicture =
+  (mainTable, mainTableictureWidth, mainTableictureHeight) => {
+    mainTable.addEventListener('click', e => {
+      const target = e.target;
+
+      if (target.hasAttribute('data-pic')) {
+        const link = target.getAttribute('data-pic');
+        const picturePosition =
+          getPictureWindowPosition(mainTableictureWidth, mainTableictureHeight);
+        open(`${link}`, '',
+            `popup ${picturePosition},
+            width=${mainTableictureWidth}, height=${mainTableictureHeight}`,
+        );
+      }
+    });
+  };
+
+export const editGood = () => {
   mainTable.addEventListener('click', e => {
     const target = e.target;
-    if (target.hasAttribute('data-pic')) {
-      const link = target.getAttribute('data-pic');
-      const picturePosition =
-        getPictureWindowPosition(pictureWidth, pictureHeigth);
-      open(`${link}`, '',
-          `popup ${picturePosition},
-          width=${pictureWidth}, height=${pictureHeigth}`,
-      );
+
+    if (target.closest('.goods__table-button-edit')) {
+      console.log(123);
     }
   });
 };
-*/

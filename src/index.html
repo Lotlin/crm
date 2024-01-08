@@ -88,28 +88,101 @@
     </div>
   </section>
 
-  <div class="add-good">
-    <div class="add-good__overlay">
-      <div class="add-good__container">
-        <h2 class="add-good__title">Добавить товар</h2>
-        <button class="add-good__close-button"></button>
-        <div class="add-good__line line"></div>
-        <form class="add-good__form form" id="add-goodForm" action="#" method="post" enctype="multipart/form-data">
+  <div class="add-good modal-good">
+    <div class="add-good__overlay modal-good__overlay">
+      <div class="add-good__container modal-good__container">
+        <h2 class="modal-good__title">Добавить товар</h2>
+        <button class="modal-good__close-button add-good__close-button"></button>
+        <div class="modal-good__line line"></div>
+        <form class="add-good-form modal-good__form form" id="add-goodForm" action="#" method="post" enctype="multipart/form-data">
           <label class="form__label form__label-name" tabindex="0">
             <span class="form__span">Наименование</span>
-            <input class="form__input" type="text" name="title" tabindex="-1" required>
+            <input class="form__input" type="text" name="addGoodTitle" tabindex="-1" required>
           </label>
           
           <label class="form__label form__label-category" tabindex="0">
             <span class="form__span">Категория</span>
-            <input class="form__input" type="text" name="category" tabindex="-1" required>
+            <input class="form__input" type="text" name="addGoodCategory" tabindex="-1" required>
           </label>
             
           <label class="form__label form__label-units" tabindex="0">
             <span class="form__span">Единицы измерения</span>
-            <input class="form__input" type="text" name="units" tabindex="-1" required>
+            <input class="form__input" type="text" name="addGoodUnits" tabindex="-1" required>
           </label>
           
+          <div class="form__discount-wrapper">
+            <span class="form__discount-span">Дисконт</span>
+            <label class="form__label-discount-checkbox add-good-form___label-discount-checkbox" tabindex="0">
+              <input class="form__discount-checkbox-input add-good-form__checkbox-input" type="checkbox" name="addGoodDiscountCheckbox" tabindex="-1">
+            </label>
+            
+            <label class="form__label-discount" tabindex="0">
+              <input class="form__discount-input" type="number" min="0" max="100" name="addGoodDiscountInput" tabindex="-1" disabled required>
+            </label>
+          </div>
+          
+          <label class="form__label form__label-description" tabindex="0">
+            <span class="form__span">Описание</span>
+            <textarea class="form__textarea" name="addGoodescription" tabindex="-1" required></textarea>
+          </label>
+        
+          <label class="form__label form__label-amount" tabindex="0">
+            <span class="form__span">Количество</span>
+            <input class="form__input" type="number" min="0" name="addGoodAmount" tabindex="-1" required>
+          </label>
+          
+          <label class="form__label form__label-price" tabindex="0">
+            <span class="form__span">Цена</span>
+            <input class="form__input" type="number" name="addGoodPrice" min="0" tabindex="-1" required>
+          </label>
+          
+          <label class="form__adding-good-label" tabindex="0">
+            <input class="form__adding-good-input" type="file" name="addGoodImages" accept="img" tabindex="-1">
+            <span class="form__adding-good-span">Добавить изображение</span>
+          </label>
+
+          <h3 class="form__adding-good-error-img-size">Изображение не должно превышать размер 1 Мб</h3>
+
+          <div class="form__adding-good-img">
+            <div class="form__adding-good-img-del-background"></div>
+            <div class="form__adding-good-img-del"></div>
+          </div>
+        </form>
+
+        <div class="modal-good__total-wrapper">
+          <p class="add-good__total total">Итоговая стоимость: <span class="add-good__total-num total__num"></span></p>
+          <button class="form-button" form="add-goodForm" type="submit" value="formButton">Добавить товар</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="edit-good modal-good">
+    <div class="edit-good__overlay modal-good__overlay">
+      <div class="modal-good__container">
+        <div class="edit-good__wrapper">
+          <h2 class="modal-good__title edit-title">Изменить товар</h2>
+          <span class="edit-good-id">id: 201910241</span>
+        </div>
+        
+        <button class="modal-good__close-button"></button>
+        <div class="modal-good__line line"></div>
+        <form class="edit-good__form form" id="edit-goodForm" action="#" method="post" enctype="multipart/form-data">
+          <label class="form__label form__label-name" tabindex="0">
+            <span class="form__span">Наименование</span>
+            <input class="form__input" type="text" name="title" tabindex="-1">
+          </label>
+          
+          <label class="form__label form__label-category" tabindex="0">
+            <span class="form__span">Категория</span>
+            <input class="form__input" type="text" name="category" tabindex="-1">
+          </label>
+          
+          <label class="form__label form__label-units" tabindex="0">
+            <span class="form__span">Единицы измерения</span>
+            <input class="form__input" type="text" name="units" tabindex="-1">
+          </label>
+        
           <div class="form__discount-wrapper">
             <span class="form__discount-span">Дисконт</span>
             <label class="form__label-discount-checkbox" tabindex="0">
@@ -117,123 +190,52 @@
             </label>
             
             <label class="form__label-discount" tabindex="0">
-              <input class="form__discount-input" type="number" min="0" max="100" name="discountInput" tabindex="-1" disabled required>
+              <input class="form__discount-input" type="text" name="discount" tabindex="-1">
             </label>
           </div>
-          
+        
           <label class="form__label form__label-description" tabindex="0">
             <span class="form__span">Описание</span>
-            <textarea class="form__textarea" name="description" tabindex="-1" required></textarea>
+            <textarea class="form__textarea" name="description" tabindex="-1"></textarea>
           </label>
-        
+          
           <label class="form__label form__label-amount" tabindex="0">
             <span class="form__span">Количество</span>
-            <input class="form__input" type="number" min="0" name="amount" tabindex="-1" required>
+            <input class="form__input" type="text" name="amount" tabindex="-1">
           </label>
           
           <label class="form__label form__label-price" tabindex="0">
             <span class="form__span">Цена</span>
-            <input class="form__input" type="number" name="price" min="0" tabindex="-1" required>
+            <input class="form__input" type="text" name="price" tabindex="-1">
           </label>
-          
+        
           <label class="form__adding-good-label" tabindex="0">
-            <input class="form__adding-good-input" type="file" name="images" accept="img" tabindex="-1">
+            <input class="form__adding-good-input add-good-form__img-input" type="file" name="img" accept="img" tabindex="-1">
             <span class="form__adding-good-span">Добавить изображение</span>
           </label>
-  
+
           <h3 class="form__adding-good-error-img-size">Изображение не должно превышать размер 1 Мб</h3>
-  
+
           <div class="form__adding-good-img">
             <div class="form__adding-good-img-del-background"></div>
             <div class="form__adding-good-img-del"></div>
           </div>
         </form>
-  
-        <div class="add-good__total-wrapper">
-          <p class="add-good__total total">Итоговая стоимость: <span class="add-good__total-num total__num"></span></p>
-          <button class="add-good__form-button" form="add-goodForm" type="submit" value="formButton">Добавить товар</button>
+
+        <div class="modal-good__total-wrapper">
+          <p class="modal-good__total total">Итоговая стоимость: <span class="edit-good__total-num total__num">$ 900.00</span></p>
+          <button class="form-button" form="edit-goodForm" type="submit" value="formButton">Добавить товар</button>
         </div>
       </div>
+  </div>
+
+    <div class="modal-good__error">
+      <button class="modal-good__error-close-button"></button>
+      <div class="modal-good__error-img-wrapper"><img class="modal-good__error-img" src="img/cross-red.svg" alt="красный крест"></div>
+      <h2 class="modal-good__error-title">Что-то пошло не так</h2>
     </div>
   </div>
 
-<!--
-  <div class="change-good add-good">
-    <div class="modal-container">
-      <div class="change-good__wrapper">
-        <h2 class="add-good__title change-good-title">Изменить товар</h2>
-        <span class="change-good-id">id: 201910241</span>
-      </div>
-      
-      <button class="add-good__close-button"></button>
-      <div class="add-good__line line"></div>
-      <form class="add-good__form form" id="change-goodForm" action="#" method="post" enctype="multipart/form-data">
-        <label class="form__label form__label-name" tabindex="0">
-          <span class="form__span">Наименование</span>
-          <input class="form__input" type="text" name="title" tabindex="-1">
-        </label>
-        
-        <label class="form__label form__label-category" tabindex="0">
-          <span class="form__span">Категория</span>
-          <input class="form__input" type="text" name="category" tabindex="-1">
-        </label>
-        
-        <label class="form__label form__label-units" tabindex="0">
-          <span class="form__span">Единицы измерения</span>
-          <input class="form__input" type="text" name="units" tabindex="-1">
-        </label>
-      
-        <div class="form__discount-wrapper">
-          <span class="form__discount-span">Дисконт</span>
-          <label class="form__label-discount-checkbox" tabindex="0">
-            <input class="form__discount-checkbox-input" type="checkbox" name="discountCheckbox" tabindex="-1">
-          </label>
-          
-          <label class="form__label-discount" tabindex="0">
-            <input class="form__discount-input" type="text" name="discount" tabindex="-1">
-          </label>
-        </div>
-      
-        <label class="form__label form__label-description" tabindex="0">
-          <span class="form__span">Описание</span>
-          <textarea class="form__textarea" name="description" tabindex="-1"></textarea>
-        </label>
-        
-        <label class="form__label form__label-amount" tabindex="0">
-          <span class="form__span">Количество</span>
-          <input class="form__input" type="text" name="amount" tabindex="-1">
-        </label>
-        
-        <label class="form__label form__label-price" tabindex="0">
-          <span class="form__span">Цена</span>
-          <input class="form__input" type="text" name="price" tabindex="-1">
-        </label>
-      
-        <label class="form__adding-good-label" tabindex="0">
-          <input class="form__adding-good-input" type="file" name="img" accept="img" tabindex="-1">
-          <span class="form__adding-good-span">Добавить изображение</span>
-        </label>
-
-        <h3 class="form__adding-good-error-img-size">Изображение не должно превышать размер 1 Мб</h3>
-
-        <div class="form__adding-good-img">
-          <div class="form__adding-good-img-del-background"></div>
-          <div class="form__adding-good-img-del"></div>
-        </div>
-      </form>
-
-      <div class="add-good__total-wrapper">
-        <p class="add-good__total total">Итоговая стоимость: <span class="add-good__total-num total__num">$ 900.00</span></p>
-        <button class="add-good__form-button" form="change-goodForm" type="submit" value="formButton">Добавить товар</button>
-      </div>
-    </div>
-    <div class="add-good__error">
-      <button class="add-good__error-close-button"></button>
-      <div class="add-good__error-img-wrapper"><img class="add-good__error-img" src="img/cross-red.svg" alt="красный крест"></div>
-      <h2 class="add-good__error-title">Что-то пошло не так</h2>
-    </div>
-  </div>
--->
   <section class="error">
     <button class="error__close-button"></button>
     <img class="error__img" src="img/cross-red.svg" alt="красный крест">

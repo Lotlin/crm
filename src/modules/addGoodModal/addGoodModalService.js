@@ -5,11 +5,11 @@ import {
 
 export const createNewGood = (newGoodData) => {
   const id = Date.parse(new Date());
-  const title = newGoodData.title;
-  const category = newGoodData.category;
-  const units = newGoodData.units;
-  const count = newGoodData.amount;
-  const fullPrice = newGoodData.price;
+  const title = newGoodData.addGoodTitle;
+  const category = newGoodData.addGoodCategory;
+  const units = newGoodData.addGoodUnits;
+  const count = newGoodData.addGoodAmount;
+  const fullPrice = newGoodData.addGoodPrice;
 
   const discountSize = getDiscountSum(fullPrice, newGoodData.discountInput);
   const discountedPrice = getDiscountedPrice(fullPrice, discountSize);
@@ -17,7 +17,7 @@ export const createNewGood = (newGoodData) => {
   // main table doesn't have column for discountedPrice
   const price = discountedPrice;
 
-  const image = newGoodData.images;
+  const image = newGoodData.addGoodImages;
 
   const newGood = {
     id, title, category, units, count, price, totalPrice, image,

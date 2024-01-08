@@ -1,0 +1,400 @@
+.form {
+  margin-bottom: 33px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr) minmax(0, max-content);
+  gap: 12px 24px;
+  grid-template-areas: 
+  "name description"
+  "category description"
+  "units amount"
+  "discount price"
+  "img-error adding-good"
+  "img img";
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px 0px #00000033;
+}
+
+.form__label {
+  position: relative;
+  padding-top: 20px;
+}
+
+.form__label:hover input {
+  outline: 1px solid #ffffff;
+}
+
+.form__label:hover input,
+.form__label:hover .form__textarea,
+.form__label-discount-checkbox:hover .form__discount-checkbox-input::before,
+.form__label-discount:hover .form__discount-input {
+  outline: 1px solid #9686f0;
+}
+
+.form__label:focus,
+.form__discount-wrapper:focus,
+.form__label-discount-checkbox:focus,
+.form__label-discount:focus,
+.form__label:active,
+.form__discount-wrapper:active,
+.form__label-discount-checkbox:active,
+.form__label-discount:active {
+  outline: none;
+}
+
+.form__label:focus .form__input,
+.form__label:focus .form__textarea,
+.form__label-discount-checkbox:focus .form__discount-checkbox-input::before,
+.form__label-discount:focus .form__discount-input,
+.form__label:active .form__input,
+.form__label:active .form__textarea,
+.form__label-discount-checkbox:active .form__discount-checkbox-input::before,
+.form__label-discount:active .form__discount-input {
+  outline: 1px solid #6d5Bd0;
+}
+
+.form__input:focus,
+.form__textarea:focus, 
+.form__discount-checkbox-input:focus::before,
+.form__discount-input:focus {
+  outline: 1px solid #6d5Bd0;
+}
+
+.form__label-name {
+  grid-area: name;
+}
+
+.form__label-category {
+  grid-area: category;
+}
+
+.form__label-units {
+  grid-area: units;
+}
+
+.form__discount-wrapper {
+  grid-area: discount;
+  display: grid;
+  grid-template-columns: 40px 200px;
+  grid-template-rows: 15px 40px;
+  grid-template-areas: 
+  "span span"
+  "checkbox input";
+  gap: 5px 10px;
+}
+
+.form__discount-span {
+  grid-area: span;
+}
+
+.form__label-discount-checkbox {
+  grid-area: checkbox;
+  position: relative;
+}
+
+.form__discount-checkbox-input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  display: block;
+}
+
+.form__discount-checkbox-input::before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background-color: #f4f2ff;
+}
+
+.form__discount-checkbox-input::after {
+  position: absolute;
+  display: block;
+  content: "";
+  top: 7px;
+  left: 15px;
+  width: 12px;
+  height: 20px;
+  border-color: transparent #000000 #000000 transparent;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.form__discount-checkbox-input:checked:after {
+  opacity: 1;
+}
+
+.form__label-discount {
+  grid-area: input;
+}
+
+.form__discount-input {
+  width: 200px;
+  height: 40px;
+}
+
+.form__discount-input:disabled {
+  background-color: #eeeeee;
+}
+
+.form__label-description {
+  grid-area: description;
+}
+
+.form__label-amount {
+  grid-area: amount;
+}
+
+.form__label-price {
+  grid-area: price;
+}
+
+.form__span {
+  position: absolute;
+  top: 0;
+}
+
+.form__span,
+.form__discount-span {
+  padding-left: 10px;
+  color: #6e6893;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.form__input,
+.form__discount-input,
+.form__textarea {
+  padding-left: 10px;
+  background-color: #f4f2ff;
+  border: none;
+  border-radius: 6px;
+  color: #6e6893;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.form__input {
+  width: 250px;
+  height: 40px;
+}
+
+.form__textarea {
+  width: 250px;
+  height: 112px;
+  resize: none;
+}
+
+.form__adding-good-label {
+  padding-top: 32px;
+  grid-area: adding-good;
+  cursor: pointer;
+}
+
+.form__adding-good-label:hover .form__adding-good-span,
+.form__adding-good-label:active .form__adding-good-span {
+  background-color: #4a34c9;
+}
+
+.form__adding-good-label:focus {
+  outline: none;
+
+}
+
+.form__adding-good-label:focus .form__adding-good-span {
+  outline: 2px solid #4a34c9;
+}
+
+.form__adding-good-input {
+  display: none;
+}
+
+.form__adding-good-span {
+  padding: 11px 29px 11px 28px;
+  color: #ffffff;
+  background-color: #6d5bd0;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.form-button {
+  padding: 10px 25px;
+  background-color: #6d5Bd0;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.form-button:hover,
+.form-button:active {
+  background-color: #4a34c9;
+}
+
+.form-button:focus {
+  outline: 1px solid #4a34c9;
+}
+
+.form__adding-good-error-img-size {
+  display: none;
+  grid-area: img-error;
+  padding-top: 20px;
+  color: #d80101;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 17px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.form__adding-good-error-img-size--visible {
+  display: block;
+}
+
+.form__adding-good-img-wrap {
+  display: none;
+  grid-area: img;
+  position: relative;
+  height: 236px;
+}
+
+.form__adding-good-img-wrap--visible {
+  display: block;
+}
+
+.form__adding-good-img-preview {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+}
+
+
+.form__adding-good-img-preview-del-overlay {
+  position: absolute;
+  top: 0;
+  left: 174px;
+  width: 200px;
+  height: 200px;
+  background-color: #000000;
+  opacity: 0.5;
+}
+
+.form__adding-good-img-preview-del {
+  position: absolute;
+  top: 80px;
+  left: 254px;
+  width: 40px;
+  height: 40px;
+  background: url(../img/img-del.svg);
+  z-index: 1;
+}
+
+@media (max-width: 1300px) {
+  .form {
+    margin-bottom: 2.54vw;
+    padding: 1.23vw;
+    gap: 0.92vw 1.85vw;
+  }
+  
+  .form__label {
+    padding-top: 1.54vw;
+  }
+  
+  .form__discount-wrapper {
+    grid-area: discount;
+    display: grid;
+    grid-template-columns: 3.08vw 15.38vw;
+    grid-template-rows: 1.15vw 3.08vw;
+    gap: 0.38vw 0.77vw;
+  }
+    
+  .form__discount-checkbox-input::before {
+    width: 3.08vw;
+    height: 3.08vw;
+  }
+  
+  .form__discount-checkbox-input::after {
+    top: 0.54vw;
+    left: 1.15vw;
+    width: 0.8svw;
+    height: 1.54vw;
+  }
+  
+  .form__discount-input {
+    width: 15.38vw;
+    height: 3.08vw;
+  }
+    
+  .form__span,
+  .form__discount-span {
+    padding-left: 0.77vw;
+    color: #6e6893;
+    font-size: 0.92vw;
+  }
+  
+  .form__input,
+  .form__discount-input,
+  .form__textarea {
+    padding-left: 0.77vw;
+    font-size: 0.92vw;
+  }
+  
+  .form__input {
+    width: 19.23vw;
+    height: 3.08vw;
+  }
+  
+  .form__textarea {
+    width: 19.23vw;
+    height: 10.62vw;
+  }
+  
+  .form__adding-good-label {
+    padding-top: 3.2vw;
+  }
+  
+  .form__adding-good-span {
+    padding: 0.85vw 2.23vw 0.85vw 2.15vw;
+    font-size: 1.08vw;
+  }
+  
+  .form__adding-good-error-img-size {
+    font-size: 1.08vw;
+    line-height: 1.31vw;
+  }
+  
+  .form__adding-good-img {
+    height: 18.15vw;
+    background-size: 15.38vw;
+  }
+  
+  .form__adding-good-img-del-background {
+    top: 1.38vw;
+    left: 13.38vw;
+    width: 15.38vw;
+    height: 15.38vw;
+  }
+  
+  .form__adding-good-img-del {
+    top: 7.54vw;
+    left: 19.54vw;
+    width: 3.08vw;
+    height: 3.08vw;
+    background: url(../img/img-del.svg);
+    background-size: contain;
+  }
+}
