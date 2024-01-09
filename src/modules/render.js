@@ -120,6 +120,7 @@ export const renderMainGoods = (arr) => {
 
 export const showAllGoodsTotalPrice = () => {
   const totalPrice = getAllGoodsTotalPrice();
+  console.log('totalPrice: ', totalPrice);
   totalPriceElem.textContent = `${currency}${totalPrice}`;
 };
 

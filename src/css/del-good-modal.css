@@ -1,0 +1,46 @@
+.del-good-modal {
+  display: none;
+}
+
+.del-good-modal--visible {
+  display: block;
+}
+
+.del-good-modal__button-wrapper {
+  padding-top: 120px;
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.del-good-modal__button {
+  padding: 10px 40px;
+  background-color: #6d5bd0;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.del-good-modal__button:hover {
+  background-color: #4a34c9;
+  border: 1px solid transparent;
+}
+
+.del-good-modal__button:focus {
+  background-color: #4a34c9;
+  border: 1px solid #150379;
+  outline: none;
+}
+
+.del-good-modal__button:active {
+  outline: 1px solid #150379;
+}
+
+.del-good-modal__button-no {
+  padding-left: 47px;
+  padding-right: 47px;
+}
+
