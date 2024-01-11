@@ -3,12 +3,9 @@ import {
 } from './editGoodModalGetElements';
 import {getFormData} from '../util';
 import {createEditedGood} from './editGoodService';
-import {renderRow, showAllGoodsTotalPrice} from '../render';
-import {
-  mainTable, getMainTableEditedGoodElementTr, getTableRowElements,
-} from '../getElements';
+import {getMainTableEditedGoodElementTr} from '../getElements';
 import {fetchRequest, fillEditedGoodTr} from '../service';
-import {showAddingGoodTotalPrice} from '../addGoodModal/addGoodModalRender';
+import {goodUrl} from '../data';
 
 export const openEditGoodModal = () => {
   editGoodModal.classList.add('edit-good--visible');
@@ -36,6 +33,7 @@ const closeEditGoodModal = (goodEdited = false) => {
 
 export const editGoodModalControl = () => {
   closeEditGoodModal();
+  // toDO все поля формы обязательны для заполнения
 
   const editGoodModalForm = getEditGoodModalElements().form;
 
@@ -51,9 +49,15 @@ export const editGoodModalControl = () => {
     // ToDO добавить функцию - показать итоговую стоимость изменяемых товаров
     fillEditedGoodTr(mainTableEditedGoodTr, editedGoodData);
     // toDO отправка изменённых данных на сервер
-    // fetchRequest();
+    const serverData = createEditedGood(editedGoodData);
+    const url = `${goodUrl}${id}`;
 
-    e.target.reset();
+    fetchRequest(url, {
+      method: 'PATCH',
+      body: serverData,
+    });
+
+    // e.target.reset();
 
     closeEditGoodModal('goodEdited');
   });

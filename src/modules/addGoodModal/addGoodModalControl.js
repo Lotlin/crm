@@ -53,6 +53,7 @@ const addGoodModalFormControl = () => {
   discountInputControl();
 
   addGoodModalForm.addEventListener('submit', e => {
+    // toDo отправка данных на сервер
     e.preventDefault();
     const newGoodData = getFormData(e.target);
     const newGood = createNewGood(newGoodData);

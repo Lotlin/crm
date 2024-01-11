@@ -41,27 +41,35 @@ export const fillEditGoodModal = (data) => {
   totalPriceElem.textContent = `${currency}${countedTotalPrice}`;
 };
 
-
+// toDo проверить, не задваивается ли функционал
 export const createEditedGood = (newGoodData) => {
-  const idElem = getEditGoodModalElements().id.textContent;
-  const id = idElem;
+  // const idElem = getEditGoodModalElements().id.textContent;
+  // const id = idElem;
   const title = newGoodData.editGoodTitle;
+  const description = newGoodData.editGoodDescription;
   const category = newGoodData.editGoodCategory;
   const units = newGoodData.editGoodUnits;
-  const count = newGoodData.editGoodAmount;
+  const count = Number(newGoodData.editGoodAmount);
+  const discountPercent = Number(newGoodData.editGoodDiscountInput);
   const fullPrice = newGoodData.editGoodPrice;
 
-  const discountSize =
-    getDiscountSum(fullPrice, newGoodData.editGoodDiscountInput);
+  const discountSize = getDiscountSum(fullPrice, discountPercent);
   const discountedPrice = getDiscountedPrice(fullPrice, discountSize);
-  const totalPrice = getTotalPrice(discountedPrice, count);
+  // const totalPrice = getTotalPrice(discountedPrice, count);
   // main table doesn't have column for discountedPrice
-  const price = discountedPrice;
-
+  const price = Number(discountedPrice);
+  // toDO правильное добавление картинок
   const image = newGoodData.editGoodImages;
 
   const newGood = {
-    id, title, category, units, count, price, totalPrice, image,
+    title,
+    description,
+    price,
+    discountPercent,
+    count,
+    units,
+    image,
+    category,
   };
 
   return newGood;
