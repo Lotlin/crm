@@ -92,11 +92,11 @@ export const renderRow = (obj) => {
           imgStr = obj[key];
         } else if (key === 'price') {
           tableRow.insertAdjacentHTML('beforeend',
-              `<td>${currency}${obj[key]}</td>`,
+              `<td class=goods__table-price>${currency}${obj[key]}</td>`,
           );
         } else {
           tableRow.insertAdjacentHTML('beforeend',
-              `<td>${obj[key]}</td>`,
+              `<td class=goods__table-${key}>${obj[key]}</td>`,
           );
         }
       }
@@ -111,8 +111,10 @@ export const renderRow = (obj) => {
   return tableRow;
 };
 
-export const renderMainGoods = (arr) => {
-  arr.map((item) => {
+export const renderMainGoods = (dataObject) => {
+  const arrayGoods = dataObject.goods;
+
+  arrayGoods.map((item) => {
     const newRow = renderRow(item);
     mainTable.appendChild(newRow);
   });
@@ -120,7 +122,6 @@ export const renderMainGoods = (arr) => {
 
 export const showAllGoodsTotalPrice = () => {
   const totalPrice = getAllGoodsTotalPrice();
-  console.log('totalPrice: ', totalPrice);
   totalPriceElem.textContent = `${currency}${totalPrice}`;
 };
 

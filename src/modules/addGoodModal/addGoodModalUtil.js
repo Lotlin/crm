@@ -1,3 +1,5 @@
+// toDO перенести в общие util
+
 export const getDiscountSum = (priceInputValue, discountInputValue) => {
   const discountSum = Number(discountInputValue) ?
    ((Number(priceInputValue) * Number(discountInputValue)) / 100) : 0;
@@ -8,4 +10,4 @@ export const getDiscountedPrice = (priceInputValue, dicsountSum) =>
   Number(priceInputValue) - Number(dicsountSum);
 
 export const getTotalPrice = (discountedPrice, amountInputValue) =>
-  discountedPrice * Number(amountInputValue);
+  Number(discountedPrice) * Number(amountInputValue);

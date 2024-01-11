@@ -151,7 +151,7 @@
 
         <div class="modal-good__total-wrapper">
           <p class="add-good__total total">Итоговая стоимость: <span class="add-good__total-num total__num"></span></p>
-          <button class="form-button" form="add-goodForm" type="submit" value="formButton">Добавить товар</button>
+          <button class="form-button" form="add-goodForm" type="submit" name="formButton">Добавить товар</button>
         </div>
       </div>
     </div>
@@ -162,55 +162,55 @@
       <div class="modal-good__container">
         <div class="edit-good__wrapper">
           <h2 class="modal-good__title edit-title">Изменить товар</h2>
-          <span class="edit-good-id">id: 201910241</span>
+          <span class="edit-good-id">id: <span class="edit-good-id-numbers">201910241</span></span>
         </div>
         
-        <button class="modal-good__close-button"></button>
+        <button class="edit-good__close-button modal-good__close-button"></button>
         <div class="modal-good__line line"></div>
         <form class="edit-good__form form" id="edit-goodForm" action="#" method="post" enctype="multipart/form-data">
           <label class="form__label form__label-name" tabindex="0">
             <span class="form__span">Наименование</span>
-            <input class="form__input" type="text" name="title" tabindex="-1">
+            <input class="form__input" type="text" name="editGoodTitle" tabindex="-1">
           </label>
           
           <label class="form__label form__label-category" tabindex="0">
             <span class="form__span">Категория</span>
-            <input class="form__input" type="text" name="category" tabindex="-1">
+            <input class="form__input" type="text" name="editGoodCategory" tabindex="-1">
           </label>
           
           <label class="form__label form__label-units" tabindex="0">
             <span class="form__span">Единицы измерения</span>
-            <input class="form__input" type="text" name="units" tabindex="-1">
+            <input class="form__input" type="text" name="editGoodUnits" tabindex="-1">
           </label>
         
           <div class="form__discount-wrapper">
             <span class="form__discount-span">Дисконт</span>
             <label class="form__label-discount-checkbox" tabindex="0">
-              <input class="form__discount-checkbox-input" type="checkbox" name="discountCheckbox" tabindex="-1">
+              <input class="form__discount-checkbox-input edit-good__discount-checkbox" type="checkbox" name="editGoodDiscountCheckbox" tabindex="-1">
             </label>
             
             <label class="form__label-discount" tabindex="0">
-              <input class="form__discount-input" type="text" name="discount" tabindex="-1">
+              <input class="form__discount-input" type="text" name="editGoodDiscountInput" tabindex="-1">
             </label>
           </div>
         
           <label class="form__label form__label-description" tabindex="0">
             <span class="form__span">Описание</span>
-            <textarea class="form__textarea" name="description" tabindex="-1"></textarea>
+            <textarea class="form__textarea" name="editGoodDescription" tabindex="-1"></textarea>
           </label>
           
           <label class="form__label form__label-amount" tabindex="0">
             <span class="form__span">Количество</span>
-            <input class="form__input" type="text" name="amount" tabindex="-1">
+            <input class="form__input" type="text" name="editGoodAmount" tabindex="-1">
           </label>
           
           <label class="form__label form__label-price" tabindex="0">
             <span class="form__span">Цена</span>
-            <input class="form__input" type="text" name="price" tabindex="-1">
+            <input class="form__input" type="text" name="editGoodPrice" tabindex="-1">
           </label>
         
           <label class="form__adding-good-label" tabindex="0">
-            <input class="form__adding-good-input add-good-form__img-input" type="file" name="img" accept="img" tabindex="-1">
+            <input class="form__adding-good-input edit-good-form__img-input" type="file" name="editGoodImages" accept="img" tabindex="-1">
             <span class="form__adding-good-span">Добавить изображение</span>
           </label>
 
@@ -223,8 +223,8 @@
         </form>
 
         <div class="modal-good__total-wrapper">
-          <p class="modal-good__total total">Итоговая стоимость: <span class="edit-good__total-num total__num">$ 900.00</span></p>
-          <button class="form-button" form="edit-goodForm" type="submit" value="formButton">Добавить товар</button>
+          <p class="modal-good__total total">Итоговая стоимость: <span class="edit-good__total-num total__num"></span></p>
+          <button class="form-button edit-good-form__button" form="edit-goodForm" type="submit" name="editGoodFormButton">Добавить товар</button>
         </div>
       </div>
   </div>

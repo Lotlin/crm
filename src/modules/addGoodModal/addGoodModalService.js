@@ -11,7 +11,8 @@ export const createNewGood = (newGoodData) => {
   const count = newGoodData.addGoodAmount;
   const fullPrice = newGoodData.addGoodPrice;
 
-  const discountSize = getDiscountSum(fullPrice, newGoodData.discountInput);
+  const discountSize =
+    getDiscountSum(fullPrice, newGoodData.addGoodDiscountInput);
   const discountedPrice = getDiscountedPrice(fullPrice, discountSize);
   const totalPrice = getTotalPrice(discountedPrice, count);
   // main table doesn't have column for discountedPrice

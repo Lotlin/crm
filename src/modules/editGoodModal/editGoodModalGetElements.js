@@ -1,26 +1,26 @@
 export const editGoodModal = document.querySelector('.edit-good');
 
-
-/*
-export const getModalElements = () => {
-  const overlay = document.querySelector('.add-good__container');
-  const closeButton = overlay.querySelector('.add-good__close-button');
-  const form = overlay.querySelector('.add-good-form');
-  const title = overlay.querySelector('[name=addGoodTitle]');
-  const category = overlay.querySelector('[name=addGoodCategory]');
-  const units = overlay.querySelector('[name=addGoodUnits]');
+export const getEditGoodModalElements = () => {
+  const overlay = document.querySelector('.edit-good__overlay');
+  const id = overlay.querySelector('.edit-good-id-numbers');
+  const closeButton = overlay.querySelector('.edit-good__close-button');
+  const form = overlay.querySelector('.edit-good__form');
+  const title = overlay.querySelector('[name=editGoodTitle]');
+  const category = overlay.querySelector('[name=editGoodCategory]');
+  const units = overlay.querySelector('[name=editGoodUnits]');
   const discountCheckbox =
-    overlay.querySelector('.add-good-form__checkbox-input');
-  const discount = overlay.querySelector('[name=addGoodDiscountInput]');
-  const description = overlay.querySelector('[name=addGoodescription]');
-  const count = overlay.querySelector('[name=addGoodAmount]');
-  const price = overlay.querySelector('[name=addGoodPrice]');
-  const totalPrice = overlay.querySelector('.add-good__total-num');
-  const addImgInput = overlay.querySelector('.add-good-form__img-input');
-  const previewImg = overlay.querySelector('.form__adding-good-img-preview');
+    overlay.querySelector('.edit-good__discount-checkbox');
+  const discount = overlay.querySelector('[name=editGoodDiscountInput]');
+  const description = overlay.querySelector('[name=editGoodDescription]');
+  const count = overlay.querySelector('[name=editGoodAmount]');
+  const price = overlay.querySelector('[name=editGoodPrice]');
+  const totalPrice = overlay.querySelector('.edit-good__total-num');
+  const addImgInput = overlay.querySelector('.edit-good-form__img-input');
+  // const addGoodButton = overlay.querySelector('.edit-good-form__button');
 
   return {
     overlay,
+    id,
     closeButton,
     form,
     title,
@@ -33,7 +33,6 @@ export const getModalElements = () => {
     price,
     totalPrice,
     addImgInput,
-    previewImg,
+    // addGoodButton,
   };
 };
-*/
