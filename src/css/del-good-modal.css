@@ -6,6 +6,10 @@
   display: block;
 }
 
+.del-good-modal__container {
+  display: block;
+}
+
 .del-good-modal__button-wrapper {
   padding-top: 120px;
   display: flex;
