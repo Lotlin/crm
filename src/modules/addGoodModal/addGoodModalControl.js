@@ -4,11 +4,12 @@ import {
   goodTotalPrice, addGoodModalForm, addGoodModalFormDiscountCheckbox,
   addGoodModalFormDiscountInput,
 } from './addGoodModalGetElements';
-import {currency} from '../data';
+import {currency, getGoodsUrl} from '../data';
 import {showAddingGoodTotalPrice} from './addGoodModalRender';
 import {createNewGood} from './addGoodModalService';
 import {renderRow, showAllGoodsTotalPrice} from '../render';
 import {getFormData} from '../util';
+import {fetchRequest} from '../service';
 
 
 const openAddGoodModal = () => {
@@ -53,13 +54,16 @@ const addGoodModalFormControl = () => {
   discountInputControl();
 
   addGoodModalForm.addEventListener('submit', e => {
-    // toDo отправка данных на сервер
     e.preventDefault();
     const newGoodData = getFormData(e.target);
     const newGood = createNewGood(newGoodData);
     const newRow = renderRow(newGood);
     mainTable.appendChild(newRow);
     showAllGoodsTotalPrice();
+    fetchRequest(getGoodsUrl, {
+      method: 'POST',
+      body: newGood,
+    });
     e.target.reset();
     closeAddGoodModal('addGood');
   });

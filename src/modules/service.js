@@ -2,7 +2,6 @@ import {
   mainTable, getGoodsTotalPrices, getTableRowElements,
 } from './getElements';
 import {currencyNumOfCharscters, delGoodUrl, getGoodDataUrl} from './data';
-// import {showAllGoodsTotalPrice} from './render';
 import {getPictureWindowPosition} from './util';
 import {openEditGoodModal} from './editGoodModal/editGoodModalControl';
 import {
@@ -84,7 +83,6 @@ export const deleteGood = () => {
           location.reload();
         }
       });
-      // showAllGoodsTotalPrice();
     }
   });
 };

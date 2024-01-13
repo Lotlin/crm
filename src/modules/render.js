@@ -129,4 +129,6 @@ export const loadGoods = async () => {
   await fetchRequest(getGoodsUrl, {
     callback: renderMainGoods,
   });
+
+  showAllGoodsTotalPrice();
 };

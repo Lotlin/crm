@@ -1,5 +1,5 @@
 import {deleteGood, showGoodPicture, editGood} from './service';
-import {loadGoods, showAllGoodsTotalPrice} from './render';
+import {loadGoods} from './render';
 import {mainTableictureWidth, mainTableictureHeight} from './data';
 
 import {mainTable} from './getElements';
@@ -8,7 +8,7 @@ import {mainTable} from './getElements';
 export const mainTableControl = () => {
   loadGoods();
   deleteGood();
-  showAllGoodsTotalPrice();
+  // showAllGoodsTotalPrice();
   showGoodPicture(mainTable, mainTableictureWidth, mainTableictureHeight);
   editGood();
 };

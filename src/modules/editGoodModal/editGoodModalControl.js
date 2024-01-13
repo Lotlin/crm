@@ -48,7 +48,7 @@ export const editGoodModalControl = () => {
 
     // ToDO добавить функцию - показать итоговую стоимость изменяемых товаров
     fillEditedGoodTr(mainTableEditedGoodTr, editedGoodData);
-    // toDO отправка изменённых данных на сервер
+
     const serverData = createEditedGood(editedGoodData);
     const url = `${goodUrl}${id}`;
 
