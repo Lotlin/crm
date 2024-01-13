@@ -4,14 +4,13 @@ import {
 
 
 export const createNewGood = (newGoodData) => {
+  // console.log(newGoodData);
   const id = Date.parse(new Date());
   const title = newGoodData.addGoodTitle;
   const category = newGoodData.addGoodCategory;
   const units = newGoodData.addGoodUnits;
   const count = Number(newGoodData.addGoodAmount);
   const fullPrice = newGoodData.addGoodPrice;
-
-  // проверить
   const discount = Number(newGoodData.addGoodDiscountInput);
   const description = newGoodData.addGoodescription;
 
@@ -22,7 +21,7 @@ export const createNewGood = (newGoodData) => {
   // main table doesn't have column for discountedPrice
   const price = discountedPrice;
 
-  const image = newGoodData.addGoodImages;
+  const image = newGoodData.images;
 
   const newGood = {
     id,

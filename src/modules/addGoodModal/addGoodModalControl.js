@@ -53,17 +53,19 @@ const discountInputControl = () => {
 const addGoodModalFormControl = () => {
   discountInputControl();
 
-  addGoodModalForm.addEventListener('submit', e => {
+  addGoodModalForm.addEventListener('submit', async e => {
     e.preventDefault();
-    const newGoodData = getFormData(e.target);
+    const newGoodData = await getFormData(e.target);
     const newGood = createNewGood(newGoodData);
     const newRow = renderRow(newGood);
     mainTable.appendChild(newRow);
     showAllGoodsTotalPrice();
+
     fetchRequest(getGoodsUrl, {
       method: 'POST',
       body: newGood,
     });
+
     e.target.reset();
     closeAddGoodModal('addGood');
   });

@@ -1,3 +1,5 @@
+import {toBase64} from './service';
+
 export const parsingNestedObject = (obj) => {
   const valArr = [];
   const nestedValues = Object.values(obj);
@@ -8,9 +10,20 @@ export const parsingNestedObject = (obj) => {
   return valArr;
 };
 
-export const getFormData = (tableElem) => {
+export const getFormData = async (tableElem) => {
   const formData = new FormData(tableElem);
   const tableData = Object.fromEntries(formData);
+  let img = '';
+  for (const key in tableData) {
+    if (typeof tableData[key] === 'object') {
+      img = tableData[key];
+    }
+  }
+  if (img.size === 0) {
+    tableData.noImg = true;
+  }
+  // tableData.addGoodImages = await toBase64(tableData.addGoodImages);
+  tableData.images = await toBase64(img);
 
   return tableData;
 };

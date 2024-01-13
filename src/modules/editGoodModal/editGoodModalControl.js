@@ -37,10 +37,17 @@ export const editGoodModalControl = () => {
 
   const editGoodModalForm = getEditGoodModalElements().form;
 
-  editGoodModalForm.addEventListener('submit', e => {
+  editGoodModalForm.addEventListener('submit', async e => {
     e.preventDefault();
 
-    const editedGoodData = getFormData(e.target);
+    const editedGoodData = await getFormData(e.target);
+
+    if (editedGoodData.noImg) {
+      const editGoodEditImgElem = getEditGoodModalElements().addImgInput;
+      if (editGoodEditImgElem.hasAttribute('data-pic')) {
+        editedGoodData.images = editGoodEditImgElem.getAttribute('data-pic');
+      }
+    }
 
     const idElem = getEditGoodModalElements().id;
     const id = idElem.textContent;
@@ -50,6 +57,7 @@ export const editGoodModalControl = () => {
     fillEditedGoodTr(mainTableEditedGoodTr, editedGoodData);
 
     const serverData = createEditedGood(editedGoodData);
+
     const url = `${goodUrl}${id}`;
 
     fetchRequest(url, {
@@ -57,7 +65,6 @@ export const editGoodModalControl = () => {
       body: serverData,
     });
 
-    // e.target.reset();
 
     closeEditGoodModal('goodEdited');
   });

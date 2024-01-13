@@ -26,7 +26,7 @@ export const getAddGoodModalElements = () => {
   const price = overlay.querySelector('[name=addGoodPrice]');
   const totalPrice = overlay.querySelector('.add-good__total-num');
   const addImgInput = overlay.querySelector('.add-good-form__img-input');
-  const previewImg = overlay.querySelector('.form__adding-good-img-preview');
+  // const previewImg = overlay.querySelector('.form__adding-good-img-preview');
 
   return {
     overlay,
@@ -42,6 +42,6 @@ export const getAddGoodModalElements = () => {
     price,
     totalPrice,
     addImgInput,
-    previewImg,
+    // previewImg,
   };
 };

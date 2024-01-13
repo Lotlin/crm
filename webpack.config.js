@@ -31,7 +31,7 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        {from: 'src/img/goods', to: 'image'},
+        {from: 'server/cms-backend/image', to: 'image'},
       ],
     }),
   ],

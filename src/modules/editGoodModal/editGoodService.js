@@ -7,6 +7,9 @@ import {
 export const fillEditGoodModal = (data) => {
   const elements = getEditGoodModalElements();
 
+  const imgElem = elements.addImgInput;
+  imgElem.setAttribute('data-pic', data.image);
+
   const idelem = elements.id;
   idelem.textContent = data.id;
 
@@ -43,6 +46,7 @@ export const fillEditGoodModal = (data) => {
 
 // toDo проверить, не задваивается ли функционал
 export const createEditedGood = (newGoodData) => {
+  console.log(newGoodData);
   // const idElem = getEditGoodModalElements().id.textContent;
   // const id = idElem;
   const title = newGoodData.editGoodTitle;
@@ -58,8 +62,7 @@ export const createEditedGood = (newGoodData) => {
   // const totalPrice = getTotalPrice(discountedPrice, count);
   // main table doesn't have column for discountedPrice
   const price = Number(discountedPrice);
-  // toDO правильное добавление картинок
-  const image = newGoodData.editGoodImages;
+  const image = newGoodData.images;
 
   const newGood = {
     title,
