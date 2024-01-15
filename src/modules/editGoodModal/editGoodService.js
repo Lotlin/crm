@@ -46,7 +46,6 @@ export const fillEditGoodModal = (data) => {
 
 // toDo проверить, не задваивается ли функционал
 export const createEditedGood = (newGoodData) => {
-  console.log(newGoodData);
   // const idElem = getEditGoodModalElements().id.textContent;
   // const id = idElem;
   const title = newGoodData.editGoodTitle;

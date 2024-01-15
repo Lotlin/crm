@@ -1,6 +1,6 @@
 import {namesOfTableColums, currency, getGoodsUrl} from './data';
-import {parsingNestedObject} from './util';
-import {mainTable, totalPriceElem} from './getElements';
+import {parsingNestedObject, cleanMainTable} from './util';
+import {tbodyMainTable, totalPriceElem} from './getElements';
 import {
   calculateTotalGoodsCost, getAllGoodsTotalPrice, fetchRequest,
 } from './service';
@@ -113,11 +113,19 @@ export const renderRow = (obj) => {
 
 export const renderMainGoods = (dataObject) => {
   const arrayGoods = dataObject.goods;
+  let newRow = '';
 
-  arrayGoods.map((item) => {
-    const newRow = renderRow(item);
-    mainTable.appendChild(newRow);
-  });
+  if (arrayGoods) {
+    arrayGoods.map((item) => {
+      newRow = renderRow(item);
+      tbodyMainTable.appendChild(newRow);
+    });
+  } else {
+    cleanMainTable();
+    newRow = document.createElement('tr');
+    newRow.textContent = 'Не найдено товаров, отвечающих требованиям';
+    tbodyMainTable.appendChild(newRow);
+  }
 };
 
 export const showAllGoodsTotalPrice = () => {

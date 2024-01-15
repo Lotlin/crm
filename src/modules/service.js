@@ -1,7 +1,9 @@
 import {
   mainTable, getGoodsTotalPrices, getTableRowElements,
 } from './getElements';
-import {currencyNumOfCharscters, delGoodUrl, getGoodDataUrl} from './data';
+import {
+  currencyNumOfCharscters, delGoodUrl, getGoodDataUrl,
+} from './data';
 import {getPictureWindowPosition} from './util';
 import {openEditGoodModal} from './editGoodModal/editGoodModalControl';
 import {
@@ -12,6 +14,7 @@ import {fillEditGoodModal} from './editGoodModal/editGoodService';
 import {
   getDiscountSum, getDiscountedPrice, getTotalPrice,
 } from './addGoodModal/addGoodModalUtil';
+
 
 export const fetchRequest = async (url, {
   method = 'GET',
@@ -101,17 +104,17 @@ export const deleteGood = () => {
 };
 
 export const showGoodPicture =
-  (mainTable, mainTableictureWidth, mainTableictureHeight) => {
+  (mainTable, mainTablePicWidth, mainTablePicHeight) => {
     mainTable.addEventListener('click', e => {
       const target = e.target;
 
       if (target.hasAttribute('data-pic')) {
         const link = target.getAttribute('data-pic');
         const picturePosition =
-          getPictureWindowPosition(mainTableictureWidth, mainTableictureHeight);
+          getPictureWindowPosition(mainTablePicWidth, mainTablePicHeight);
         open(`${link}`, '',
             `popup ${picturePosition},
-            width=${mainTableictureWidth}, height=${mainTableictureHeight}`,
+            width=${mainTablePicWidth}, height=${mainTablePicHeight}`,
         );
       }
     });
@@ -190,3 +193,11 @@ export const fillEditedGoodTr = (tr, newData) => {
   // img
 };
 
+/*
+export const getDiscountedGoods = async () => {
+  cleanMainTable();
+  await fetchRequest(getDiscountedGoodsUrl, {
+    callback: renderMainGoods,
+  });
+};
+*/

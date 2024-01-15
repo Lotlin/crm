@@ -1,8 +1,11 @@
 const mainPage = document.querySelector('.goods');
 export const addGoodButton = mainPage.querySelector('.goods__add-good-button');
 export const mainTable = mainPage.querySelector('.goods__table');
+export const tbodyMainTable = mainTable.querySelector('.goods__table-body');
 export const delGood = mainTable.querySelector('.goods__del');
 export const totalPriceElem = mainPage.querySelector('.goods__total-num');
+export const inputSearch =
+  mainPage.querySelector('.goods__content-search-form-input');
 
 export const getGoodsTotalPrices = () =>
   document.querySelectorAll('.goods__table-total-price');

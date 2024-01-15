@@ -1,4 +1,5 @@
 import {toBase64} from './service';
+import {tbodyMainTable} from './getElements';
 
 export const parsingNestedObject = (obj) => {
   const valArr = [];
@@ -44,4 +45,8 @@ export const getPictureWindowPosition = (pictureWidth, pictureHeigth) => {
   const result = `top=${top}, left=${left}`;
 
   return result;
+};
+
+export const cleanMainTable = () => {
+  tbodyMainTable.innerHTML = '';
 };

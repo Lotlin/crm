@@ -4,7 +4,6 @@ import {
 
 
 export const createNewGood = (newGoodData) => {
-  // console.log(newGoodData);
   const id = Date.parse(new Date());
   const title = newGoodData.addGoodTitle;
   const category = newGoodData.addGoodCategory;
