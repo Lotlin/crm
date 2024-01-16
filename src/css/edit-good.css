@@ -1,12 +1,11 @@
-
 .edit-good {
   display: none;
 }
 
-
 .edit-good--visible {
   display: flex;
 }
+
 .edit-good__wrapper {
   margin-bottom: 21px;
   display: flex;
@@ -14,12 +13,24 @@
   align-items: center;
 }
 
-.edit-good-title {
-  margin-bottom: 0;
-}
-
 .edit-good-id {
   color: #c5c5c5;
   font-size: 10px;
   font-weight: 600;
+}
+
+.edit-good-form__error-img-size {
+  display: none;
+}
+
+.edit-good-form__error-img-size--visible {
+  display: block;
+}
+
+.edit-good-form__img-preview-wrapper {
+  display: none;
+}
+
+.edit-good-form__img-preview-wrapper--visible {
+  display: block;
 }

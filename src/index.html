@@ -137,15 +137,15 @@
           </label>
           
           <label class="form__adding-good-label" tabindex="0">
-            <input class="form__adding-good-input" type="file" name="addGoodImages" accept="img" tabindex="-1">
+            <input class="form__adding-good-input add-good-form__img-input" type="file" name="addGoodImages" accept="img" tabindex="-1">
             <span class="form__adding-good-span">Добавить изображение</span>
           </label>
 
-          <h3 class="form__adding-good-error-img-size">Изображение не должно превышать размер 1 Мб</h3>
-
-          <div class="form__adding-good-img">
-            <div class="form__adding-good-img-del-background"></div>
-            <div class="form__adding-good-img-del"></div>
+          <h3 class="form__adding-good-error-img-size add-good-form__error-img-size">Изображение не должно превышать размер 1 Мб</h3>
+          <div class="form__good-img-preview-wrapper add-good-form__img-preview-wrapper">
+            <img class="form__good-img-preview add-good-form__img-preview" alt="фото товара">
+            <div class="form__good-img-preview-del-background"></div>
+            <div class="form__good-img-preview-del add-good-form__img-preview-del"></div>
           </div>
         </form>
 
@@ -214,11 +214,11 @@
             <span class="form__adding-good-span">Добавить изображение</span>
           </label>
 
-          <h3 class="form__adding-good-error-img-size">Изображение не должно превышать размер 1 Мб</h3>
-
-          <div class="form__adding-good-img">
-            <div class="form__adding-good-img-del-background"></div>
-            <div class="form__adding-good-img-del"></div>
+          <h3 class="form__adding-good-error-img-size edit-good-form__error-img-size">Изображение не должно превышать размер 1 Мб</h3>
+          <div class="form__good-img-preview-wrapper edit-good-form__img-preview-wrapper">
+            <img class="form__good-img-preview edit-good-form__img-preview" alt="фото товара">
+            <div class="form__good-img-preview-del-background"></div>
+            <div class="form__good-img-preview-del edit-good-form__img-preview-del"></div>
           </div>
         </form>
 
@@ -229,13 +229,7 @@
       </div>
   </div>
 </div>
-  <!--
-    <div class="modal-good__error">
-      <button class="modal-good__error-close-button"></button>
-      <div class="modal-good__error-img-wrapper"><img class="modal-good__error-img" src="img/cross-red.svg" alt="красный крест"></div>
-      <h2 class="modal-good__error-title">Что-то пошло не так</h2>
-    </div>
-  -->
+
   <section class="message-modal del-good-modal">
     <div class="message-modal__overlay del-good-modal__overlay">
       <div class="message-modal__container del-good-modal__container">
@@ -248,12 +242,15 @@
       </div>
     </div>
   </section>
-  <!--
-  <section class="error">
-    <button class="error__close-button"></button>
-    <img class="error__img" src="img/cross-red.svg" alt="красный крест">
-    <h2 class="error__title">Что-то пошло не так</h2>
+
+  <section class="message-modal error-modal">
+    <div class="message-modal__overlay error-modal__overlay">
+      <div class="message-modal__container error-modal__container">
+        <button class="message-modal__close-button error-modal__close-button"></button>
+        <div class="error-modal__img"></div>
+        <h2 class="error-modal__title">Что-то пошло не так</h2>
+      </div>
+    </div>
   </section>
--->
 </body>
 </html>

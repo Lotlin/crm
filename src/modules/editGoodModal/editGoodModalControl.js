@@ -1,11 +1,17 @@
 import {
-  editGoodModal, getEditGoodModalElements,
+  editGoodModal, getEditGoodModalElements, editGoodModalForm,
+  editGoodAddImgInputElem, editGoodIdELem, editGoodPreviewImgWrapper,
+  editGoodPreviewImg, editGoodAddImgInput, addGoodMessageErrGoodImgMaxSize,
+  editGoodpreviewImgDel,
 } from './editGoodModalGetElements';
-import {getFormData} from '../util';
+import {
+  getFormData, getUrlWithGoodId, isInputContainFile, isImgFileSizeCorrect,
+  setPreviewImgSrc, cleanInput,
+} from '../util';
 import {createEditedGood} from './editGoodService';
 import {getMainTableEditedGoodElementTr} from '../getElements';
 import {fetchRequest, fillEditedGoodTr} from '../service';
-import {goodUrl} from '../data';
+import {goodUrl, imgSrcAttribute, goodImgMaxSize} from '../data';
 
 export const openEditGoodModal = () => {
   editGoodModal.classList.add('edit-good--visible');
@@ -31,41 +37,83 @@ const closeEditGoodModal = (goodEdited = false) => {
   }
 };
 
-export const editGoodModalControl = () => {
-  closeEditGoodModal();
-  // toDO все поля формы обязательны для заполнения
+const isGoodDataHasImage = (data) => data.hasImage;
 
-  const editGoodModalForm = getEditGoodModalElements().form;
+const isElemHasSrcAttribute =
+  (elem, imgSrcAttribute) => elem.hasAttribute(imgSrcAttribute);
 
+const setPrevDataImgSrc = (elem, data) => {
+  data.images = isElemHasSrcAttribute(elem, imgSrcAttribute) ?
+  elem.getAttribute(imgSrcAttribute) : null;
+};
+
+const getIdEditedElem = () => editGoodIdELem.textContent;
+
+const editGoodModalFormControl = () => {
   editGoodModalForm.addEventListener('submit', async e => {
     e.preventDefault();
-
     const editedGoodData = await getFormData(e.target);
 
-    if (editedGoodData.noImg) {
-      const editGoodEditImgElem = getEditGoodModalElements().addImgInput;
-      if (editGoodEditImgElem.hasAttribute('data-pic')) {
-        editedGoodData.images = editGoodEditImgElem.getAttribute('data-pic');
-      }
+    if (!isGoodDataHasImage(editedGoodData)) {
+      setPrevDataImgSrc(editGoodAddImgInputElem, editedGoodData);
     }
 
-    const idElem = getEditGoodModalElements().id;
-    const id = idElem.textContent;
-    const mainTableEditedGoodTr = getMainTableEditedGoodElementTr(id);
+    fillEditedGoodTr(
+        getMainTableEditedGoodElementTr(getIdEditedElem()),
+        editedGoodData);
 
-    // ToDO добавить функцию - показать итоговую стоимость изменяемых товаров
-    fillEditedGoodTr(mainTableEditedGoodTr, editedGoodData);
-
-    const serverData = createEditedGood(editedGoodData);
-
-    const url = `${goodUrl}${id}`;
-
-    fetchRequest(url, {
+    fetchRequest(getUrlWithGoodId(goodUrl, getIdEditedElem()), {
       method: 'PATCH',
-      body: serverData,
+      body: createEditedGood(editedGoodData),
     });
-
 
     closeEditGoodModal('goodEdited');
   });
+};
+
+const showEditGoodPreviewImg = () => {
+  editGoodPreviewImgWrapper.classList
+      .add('edit-good-form__img-preview-wrapper--visible');
+};
+
+const showEditGoodErrorSizeMessage = () => {
+  addGoodMessageErrGoodImgMaxSize.classList.
+      add('edit-good-form__error-img-size--visible');
+};
+
+const editGoodAddImgInputControl = () => {
+  editGoodAddImgInput.addEventListener('change', () => {
+    if (isInputContainFile(editGoodAddImgInput)) {
+      if (isImgFileSizeCorrect(editGoodAddImgInput, goodImgMaxSize)) {
+        setPreviewImgSrc(editGoodPreviewImg, editGoodAddImgInput);
+        showEditGoodPreviewImg();
+      } else {
+        showEditGoodErrorSizeMessage();
+        return true;
+      }
+    }
+  });
+};
+
+const hideEditGoodPreviewImg = () => {
+  editGoodPreviewImgWrapper.classList.
+      remove('edit-good-form__img-preview-wrapper--visible');
+};
+
+const delEditGoodPreviewImgControl = () => {
+  editGoodpreviewImgDel.addEventListener('click', () => {
+    hideEditGoodPreviewImg();
+    cleanInput(editGoodAddImgInput);
+  });
+};
+
+const showEditGoodImgPreviewControl = () => {
+  editGoodAddImgInputControl();
+  delEditGoodPreviewImgControl();
+};
+
+export const editGoodModalControl = () => {
+  closeEditGoodModal();
+  editGoodModalFormControl();
+  showEditGoodImgPreviewControl();
 };

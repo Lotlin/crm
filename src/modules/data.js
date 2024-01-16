@@ -12,6 +12,10 @@ export const timeOut = 3000;
 export const mainTablePicWidth = 600;
 export const mainTablePicHeight = 600;
 
+export const goodImgMaxSize = 1000000;
+
+export const imgSrcAttribute = 'data-pic';
+
 // toDO удалить повторяющиеся значение
 const ApiUrl = 'http://localhost:3000';
 export const getGoodsUrl = `${ApiUrl}/api/goods`;

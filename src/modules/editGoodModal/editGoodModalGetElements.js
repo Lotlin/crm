@@ -1,4 +1,20 @@
 export const editGoodModal = document.querySelector('.edit-good');
+const overlay = document.querySelector('.edit-good__overlay');
+export const editGoodModalForm = overlay.querySelector('.edit-good__form');
+export const editGoodAddImgInputElem =
+  overlay.querySelector('.edit-good-form__img-input');
+export const editGoodIdELem = overlay.querySelector('.edit-good-id-numbers');
+export const form = overlay.querySelector('.edit-good__form');
+export const editGoodAddImgInput =
+  form.querySelector('.edit-good-form__img-input');
+export const editGoodPreviewImg =
+  overlay.querySelector('.edit-good-form__img-preview');
+export const editGoodPreviewImgWrapper =
+  overlay.querySelector('.edit-good-form__img-preview-wrapper');
+export const addGoodMessageErrGoodImgMaxSize =
+  editGoodModalForm.querySelector('.edit-good-form__error-img-size');
+export const editGoodpreviewImgDel =
+  overlay.querySelector('.edit-good-form__img-preview-del');
 
 export const getEditGoodModalElements = () => {
   const overlay = document.querySelector('.edit-good__overlay');

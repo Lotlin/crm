@@ -2,13 +2,18 @@ import {addGoodButton, mainTable} from '../getElements';
 import {
   addGoodModal, addGoodModalCloseButton, addGoodModalOverlay,
   goodTotalPrice, addGoodModalForm, addGoodModalFormDiscountCheckbox,
-  addGoodModalFormDiscountInput,
+  addGoodModalFormDiscountInput, addGoodAddImgInput,
+  addGoodMessageErrGoodImgMaxSize, addGoodPreviewImgWrapper, addGoodPreviewImg,
+  addGoodPreviewImgDel,
 } from './addGoodModalGetElements';
-import {currency, getGoodsUrl} from '../data';
+import {currency, getGoodsUrl, goodImgMaxSize} from '../data';
 import {showAddingGoodTotalPrice} from './addGoodModalRender';
 import {createNewGood} from './addGoodModalService';
 import {renderRow, showAllGoodsTotalPrice} from '../render';
-import {getFormData} from '../util';
+import {
+  getFormData, isImgFileSizeCorrect, setPreviewImgSrc, cleanInput,
+  isInputContainFile,
+} from '../util';
 import {fetchRequest} from '../service';
 
 
@@ -71,9 +76,51 @@ const addGoodModalFormControl = () => {
   });
 };
 
+const showAddGoodPreviewImg = () => {
+  addGoodPreviewImgWrapper.classList
+      .add('add-good-form__img-preview-wrapper--visible');
+};
+
+const hideAddGoodPreviewImg = () => {
+  addGoodPreviewImgWrapper.classList.
+      remove('add-good-form__img-preview-wrapper--visible');
+};
+
+const showAddGoodErrorSizeMessage = () => {
+  addGoodMessageErrGoodImgMaxSize.classList.
+      add('add-good-form__error-img-size--visible');
+};
+
+const delAddGoodPreviewImgControl = () => {
+  addGoodPreviewImgDel.addEventListener('click', () => {
+    hideAddGoodPreviewImg();
+    cleanInput(addGoodAddImgInput);
+  });
+};
+
+const addGoodAddImgInputControl = () => {
+  addGoodAddImgInput.addEventListener('change', () => {
+    if (isInputContainFile(addGoodAddImgInput)) {
+      if (isImgFileSizeCorrect(addGoodAddImgInput, goodImgMaxSize)) {
+        setPreviewImgSrc(addGoodPreviewImg, addGoodAddImgInput);
+        showAddGoodPreviewImg();
+      } else {
+        showAddGoodErrorSizeMessage();
+        return true;
+      }
+    }
+  });
+};
+
+const showAddGoodImgPreviewControl = () => {
+  addGoodAddImgInputControl();
+  delAddGoodPreviewImgControl();
+};
+
 export const addGoodModalControl = () => {
   openAddGoodModal();
   closeAddGoodModal();
   addGoodModalFormControl();
   showAddingGoodTotalPrice();
+  showAddGoodImgPreviewControl();
 };

@@ -20,10 +20,9 @@ export const getFormData = async (tableElem) => {
       img = tableData[key];
     }
   }
-  if (img.size === 0) {
-    tableData.noImg = true;
-  }
-  // tableData.addGoodImages = await toBase64(tableData.addGoodImages);
+
+  tableData.hasImage = img.size ? 1 : 0;
+
   tableData.images = await toBase64(img);
 
   return tableData;
@@ -50,3 +49,24 @@ export const getPictureWindowPosition = (pictureWidth, pictureHeigth) => {
 export const cleanMainTable = () => {
   tbodyMainTable.innerHTML = '';
 };
+
+export const isImgFileSizeCorrect = (input, maxImgSize) =>
+  input.files[0].size < maxImgSize;
+
+export const getPreviewImgSrc = (inputFile) => {
+  const src = URL.createObjectURL(inputFile.files[0]);
+
+  return src;
+};
+
+export const setPreviewImgSrc = (imgInput, inputFile) => {
+  imgInput.src = getPreviewImgSrc(inputFile);
+};
+
+export const isInputContainFile = (input) => input.files.length;
+
+export const cleanInput = (input) => {
+  input.value = '';
+};
+
+export const getUrlWithGoodId = (url, goodId) => `${url}${goodId}`;

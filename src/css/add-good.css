@@ -5,3 +5,19 @@
 .add-good--visible {
   display: flex;
 }
+
+.add-good-form__error-img-size {
+  display: none;
+}
+
+.add-good-form__error-img-size--visible {
+  display: block;
+}
+
+.add-good-form__img-preview-wrapper {
+  display: none;
+}
+
+.add-good-form__img-preview-wrapper--visible {
+  display: block;
+}

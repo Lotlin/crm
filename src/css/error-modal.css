@@ -1,0 +1,44 @@
+.error-modal {
+  display: none;
+}
+
+.error-modal--visible {
+  display: block;
+}
+
+
+.error-modal__img {
+  position: absolute;
+  display: block;
+  top: 110px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 94px;
+  height: 94px;
+  background: url(../img/cross-red.svg) center;
+}
+
+.error-modal__title {
+  padding-top: 236px;
+  color: #6e6893;
+  letter-spacing: 1.8px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1300px) {
+  /*
+  .error__img-wrapper {
+    margin-bottom: 2.54vw;
+    padding-top: 8.38vw;
+  }
+  */
+  .error-modal__img {
+    width: 6.92vw;
+    height: 6.92vw;
+  } 
+}

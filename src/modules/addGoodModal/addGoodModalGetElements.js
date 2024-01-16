@@ -11,6 +11,18 @@ export const addGoodModalFormDiscountCheckbox =
 export const addGoodModalFormDiscountInput =
   addGoodModalForm.querySelector('.form__discount-input');
 
+const overlay = document.querySelector('.add-good__container');
+export const addGoodAddImgInput =
+  overlay.querySelector('.add-good-form__img-input');
+export const addGoodPreviewImgWrapper =
+  overlay.querySelector('.add-good-form__img-preview-wrapper');
+export const addGoodPreviewImg =
+  overlay.querySelector('.add-good-form__img-preview');
+export const addGoodPreviewImgDel =
+  overlay.querySelector('.add-good-form__img-preview-del');
+export const addGoodMessageErrGoodImgMaxSize =
+  addGoodModalForm.querySelector('.add-good-form__error-img-size');
+
 export const getAddGoodModalElements = () => {
   const overlay = document.querySelector('.add-good__container');
   const closeButton = overlay.querySelector('.add-good__close-button');
@@ -26,7 +38,6 @@ export const getAddGoodModalElements = () => {
   const price = overlay.querySelector('[name=addGoodPrice]');
   const totalPrice = overlay.querySelector('.add-good__total-num');
   const addImgInput = overlay.querySelector('.add-good-form__img-input');
-  // const previewImg = overlay.querySelector('.form__adding-good-img-preview');
 
   return {
     overlay,
@@ -42,6 +53,5 @@ export const getAddGoodModalElements = () => {
     price,
     totalPrice,
     addImgInput,
-    // previewImg,
   };
 };

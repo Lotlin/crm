@@ -14,7 +14,7 @@ import {fillEditGoodModal} from './editGoodModal/editGoodService';
 import {
   getDiscountSum, getDiscountedPrice, getTotalPrice,
 } from './addGoodModal/addGoodModalUtil';
-
+import {showError} from './errModal/errModalService';
 
 export const fetchRequest = async (url, {
   method = 'GET',
@@ -41,9 +41,16 @@ export const fetchRequest = async (url, {
       return;
     }
 
+    if (response.status === 404 || response.status === 402 ||
+        (response.status > 500 && response.status <= 599)) {
+      showError(response.status, response.statusText);
+
+      return;
+    }
+
     throw new Error(`Ошибка ${response.status}: ${response.statusText}`);
   } catch (err) {
-    callback(new Error(err));
+    showError(new Error(err));
   }
 };
 
