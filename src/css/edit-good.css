@@ -19,6 +19,7 @@
   font-weight: 600;
 }
 
+/*
 .edit-good-form__error-img-size {
   display: none;
 }
@@ -26,11 +27,4 @@
 .edit-good-form__error-img-size--visible {
   display: block;
 }
-
-.edit-good-form__img-preview-wrapper {
-  display: none;
-}
-
-.edit-good-form__img-preview-wrapper--visible {
-  display: block;
-}
+*/

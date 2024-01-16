@@ -2,8 +2,13 @@ import {
   deleteGood, showGoodPicture, editGood, fetchRequest,
 } from './service';
 import {loadGoods, renderMainGoods} from './render';
-import {mainTablePicWidth, mainTablePicHeight, timeOut} from './data';
+import {
+  mainTablePicWidth, mainTablePicHeight, timeOut, goodImgMaxSize,
+} from './data';
 import {mainTable, inputSearch} from './getElements';
+import {
+  cleanInput, isInputContainFile, isImgFileSizeCorrect, setPreviewImgSrc,
+} from './util';
 
 const inputSearchControl = async () => {
   inputSearch.addEventListener('change', () => {
@@ -19,6 +24,41 @@ const inputSearchControl = async () => {
   });
 };
 
+const hideGoodPreviewImg = (elem) => {
+  elem.classList.remove('form__good-img-preview-wrapper--visible');
+};
+
+export const modalDeleteChoosenImgControl =
+  (delGoodbutton, wrapperElem, inputElem) => {
+    delGoodbutton.addEventListener('click', () => {
+      hideGoodPreviewImg(wrapperElem);
+      cleanInput(inputElem);
+    });
+  };
+
+const showGoodPreviewImg = (elem) => {
+  elem.classList.add('form__good-img-preview-wrapper--visible');
+};
+
+const showEditGoodErrorSizeMessage = (messageElem) => {
+  messageElem.classList.add('form__adding-good-error-img-size--visible');
+};
+
+export const editGoodAddImgInputControl = (
+    addImgInput, imgElem, wrapperElem, messageElem,
+) => {
+  addImgInput.addEventListener('change', () => {
+    if (isInputContainFile(addImgInput)) {
+      if (isImgFileSizeCorrect(addImgInput, goodImgMaxSize)) {
+        setPreviewImgSrc(imgElem, addImgInput);
+        showGoodPreviewImg(wrapperElem);
+      } else {
+        showEditGoodErrorSizeMessage(messageElem);
+        return true;
+      }
+    }
+  });
+};
 
 export const mainTableControl = () => {
   loadGoods();

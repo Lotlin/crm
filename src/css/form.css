@@ -247,6 +247,7 @@
 }
 
 .form__adding-good-error-img-size {
+  display: none;
   grid-area: img-error;
   padding-top: 20px;
   color: #d80101;
@@ -257,10 +258,19 @@
   text-transform: uppercase;
 }
 
+.form__adding-good-error-img-size--visible {
+  display: block;
+}
+
 .form__good-img-preview-wrapper {
+  display: none;
   grid-area: img;
   position: relative;
   height: 236px;
+}
+
+.form__good-img-preview-wrapper--visible {
+  display: block;
 }
 
 .form__good-img-preview {
@@ -282,14 +292,16 @@
   opacity: 0.5;
 }
 
-.form__good-img-preview-del {
+.form__good-img-preview-del-button {
   position: absolute;
   top: 80px;
   left: 254px;
   width: 40px;
   height: 40px;
   background: url(../img/img-del.svg);
+  background-size: 40px;
   z-index: 1;
+  border: none;
 }
 
 @media (max-width: 1300px) {

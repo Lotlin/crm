@@ -11,7 +11,7 @@ export const editGoodPreviewImg =
   overlay.querySelector('.edit-good-form__img-preview');
 export const editGoodPreviewImgWrapper =
   overlay.querySelector('.edit-good-form__img-preview-wrapper');
-export const addGoodMessageErrGoodImgMaxSize =
+export const editGoodMessageErrGoodImgMaxSize =
   editGoodModalForm.querySelector('.edit-good-form__error-img-size');
 export const editGoodpreviewImgDel =
   overlay.querySelector('.edit-good-form__img-preview-del');

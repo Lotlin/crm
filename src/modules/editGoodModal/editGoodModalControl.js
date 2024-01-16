@@ -1,17 +1,17 @@
 import {
   editGoodModal, getEditGoodModalElements, editGoodModalForm,
   editGoodAddImgInputElem, editGoodIdELem, editGoodPreviewImgWrapper,
-  editGoodPreviewImg, editGoodAddImgInput, addGoodMessageErrGoodImgMaxSize,
+  editGoodPreviewImg, editGoodAddImgInput, editGoodMessageErrGoodImgMaxSize,
   editGoodpreviewImgDel,
 } from './editGoodModalGetElements';
-import {
-  getFormData, getUrlWithGoodId, isInputContainFile, isImgFileSizeCorrect,
-  setPreviewImgSrc, cleanInput,
-} from '../util';
+import {getFormData, getUrlWithGoodId} from '../util';
 import {createEditedGood} from './editGoodService';
 import {getMainTableEditedGoodElementTr} from '../getElements';
 import {fetchRequest, fillEditedGoodTr} from '../service';
-import {goodUrl, imgSrcAttribute, goodImgMaxSize} from '../data';
+import {goodUrl, imgSrcAttribute} from '../data';
+import {
+  modalDeleteChoosenImgControl, editGoodAddImgInputControl,
+} from '../control';
 
 export const openEditGoodModal = () => {
   editGoodModal.classList.add('edit-good--visible');
@@ -71,45 +71,14 @@ const editGoodModalFormControl = () => {
   });
 };
 
-const showEditGoodPreviewImg = () => {
-  editGoodPreviewImgWrapper.classList
-      .add('edit-good-form__img-preview-wrapper--visible');
-};
-
-const showEditGoodErrorSizeMessage = () => {
-  addGoodMessageErrGoodImgMaxSize.classList.
-      add('edit-good-form__error-img-size--visible');
-};
-
-const editGoodAddImgInputControl = () => {
-  editGoodAddImgInput.addEventListener('change', () => {
-    if (isInputContainFile(editGoodAddImgInput)) {
-      if (isImgFileSizeCorrect(editGoodAddImgInput, goodImgMaxSize)) {
-        setPreviewImgSrc(editGoodPreviewImg, editGoodAddImgInput);
-        showEditGoodPreviewImg();
-      } else {
-        showEditGoodErrorSizeMessage();
-        return true;
-      }
-    }
-  });
-};
-
-const hideEditGoodPreviewImg = () => {
-  editGoodPreviewImgWrapper.classList.
-      remove('edit-good-form__img-preview-wrapper--visible');
-};
-
-const delEditGoodPreviewImgControl = () => {
-  editGoodpreviewImgDel.addEventListener('click', () => {
-    hideEditGoodPreviewImg();
-    cleanInput(editGoodAddImgInput);
-  });
-};
-
 const showEditGoodImgPreviewControl = () => {
-  editGoodAddImgInputControl();
-  delEditGoodPreviewImgControl();
+  editGoodAddImgInputControl(
+      editGoodAddImgInput, editGoodPreviewImg,
+      editGoodPreviewImgWrapper, editGoodMessageErrGoodImgMaxSize,
+  );
+  modalDeleteChoosenImgControl(
+      editGoodpreviewImgDel, editGoodPreviewImgWrapper, editGoodAddImgInput,
+  );
 };
 
 export const editGoodModalControl = () => {

@@ -6,15 +6,15 @@ import {
   addGoodMessageErrGoodImgMaxSize, addGoodPreviewImgWrapper, addGoodPreviewImg,
   addGoodPreviewImgDel,
 } from './addGoodModalGetElements';
-import {currency, getGoodsUrl, goodImgMaxSize} from '../data';
+import {currency, getGoodsUrl} from '../data';
 import {showAddingGoodTotalPrice} from './addGoodModalRender';
 import {createNewGood} from './addGoodModalService';
 import {renderRow, showAllGoodsTotalPrice} from '../render';
-import {
-  getFormData, isImgFileSizeCorrect, setPreviewImgSrc, cleanInput,
-  isInputContainFile,
-} from '../util';
+import {getFormData} from '../util';
 import {fetchRequest} from '../service';
+import {
+  modalDeleteChoosenImgControl, editGoodAddImgInputControl,
+} from '../control';
 
 
 const openAddGoodModal = () => {
@@ -60,6 +60,7 @@ const addGoodModalFormControl = () => {
 
   addGoodModalForm.addEventListener('submit', async e => {
     e.preventDefault();
+
     const newGoodData = await getFormData(e.target);
     const newGood = createNewGood(newGoodData);
     const newRow = renderRow(newGood);
@@ -76,45 +77,14 @@ const addGoodModalFormControl = () => {
   });
 };
 
-const showAddGoodPreviewImg = () => {
-  addGoodPreviewImgWrapper.classList
-      .add('add-good-form__img-preview-wrapper--visible');
-};
-
-const hideAddGoodPreviewImg = () => {
-  addGoodPreviewImgWrapper.classList.
-      remove('add-good-form__img-preview-wrapper--visible');
-};
-
-const showAddGoodErrorSizeMessage = () => {
-  addGoodMessageErrGoodImgMaxSize.classList.
-      add('add-good-form__error-img-size--visible');
-};
-
-const delAddGoodPreviewImgControl = () => {
-  addGoodPreviewImgDel.addEventListener('click', () => {
-    hideAddGoodPreviewImg();
-    cleanInput(addGoodAddImgInput);
-  });
-};
-
-const addGoodAddImgInputControl = () => {
-  addGoodAddImgInput.addEventListener('change', () => {
-    if (isInputContainFile(addGoodAddImgInput)) {
-      if (isImgFileSizeCorrect(addGoodAddImgInput, goodImgMaxSize)) {
-        setPreviewImgSrc(addGoodPreviewImg, addGoodAddImgInput);
-        showAddGoodPreviewImg();
-      } else {
-        showAddGoodErrorSizeMessage();
-        return true;
-      }
-    }
-  });
-};
-
 const showAddGoodImgPreviewControl = () => {
-  addGoodAddImgInputControl();
-  delAddGoodPreviewImgControl();
+  editGoodAddImgInputControl(
+      addGoodAddImgInput, addGoodPreviewImg,
+      addGoodPreviewImgWrapper, addGoodMessageErrGoodImgMaxSize,
+  );
+  modalDeleteChoosenImgControl(
+      addGoodPreviewImgDel, addGoodPreviewImgWrapper, addGoodAddImgInput,
+  );
 };
 
 export const addGoodModalControl = () => {
