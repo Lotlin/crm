@@ -1,10 +1,10 @@
 export const editGoodModal = document.querySelector('.edit-good');
 const overlay = document.querySelector('.edit-good__overlay');
-export const editGoodModalForm = overlay.querySelector('.edit-good__form');
+export const editGoodModalForm = overlay.querySelector('.edit-good-form');
 export const editGoodAddImgInputElem =
   overlay.querySelector('.edit-good-form__img-input');
 export const editGoodIdELem = overlay.querySelector('.edit-good-id-numbers');
-export const form = overlay.querySelector('.edit-good__form');
+export const form = overlay.querySelector('.edit-good-form');
 export const editGoodAddImgInput =
   form.querySelector('.edit-good-form__img-input');
 export const editGoodPreviewImg =
@@ -20,7 +20,7 @@ export const getEditGoodModalElements = () => {
   const overlay = document.querySelector('.edit-good__overlay');
   const id = overlay.querySelector('.edit-good-id-numbers');
   const closeButton = overlay.querySelector('.edit-good__close-button');
-  const form = overlay.querySelector('.edit-good__form');
+  const form = overlay.querySelector('.edit-good-form');
   const title = overlay.querySelector('[name=editGoodTitle]');
   const category = overlay.querySelector('[name=editGoodCategory]');
   const units = overlay.querySelector('[name=editGoodUnits]');
@@ -32,7 +32,7 @@ export const getEditGoodModalElements = () => {
   const price = overlay.querySelector('[name=editGoodPrice]');
   const totalPrice = overlay.querySelector('.edit-good__total-num');
   const addImgInput = overlay.querySelector('.edit-good-form__img-input');
-  // const addGoodButton = overlay.querySelector('.edit-good-form__button');
+  // const addGoodButton = overlay.querySelector('.edit-good-form-button');
 
   return {
     overlay,
