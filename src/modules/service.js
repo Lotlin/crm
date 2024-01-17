@@ -2,7 +2,7 @@ import {
   mainTable, getGoodsTotalPrices, getTableRowElements,
 } from './getElements';
 import {
-  currencyNumOfCharscters, delGoodUrl, getGoodDataUrl,
+  currencyNumOfCharscters, delGoodUrl, getGoodDataUrl, categoryUrl,
 } from './data';
 import {getPictureWindowPosition} from './util';
 import {openEditGoodModal} from './editGoodModal/editGoodModalControl';
@@ -15,6 +15,7 @@ import {
   getDiscountSum, getDiscountedPrice, getTotalPrice,
 } from './addGoodModal/addGoodModalUtil';
 import {showError} from './errModal/errModalService';
+import {renderDatalistOption} from './render';
 
 export const fetchRequest = async (url, {
   method = 'GET',
@@ -198,6 +199,12 @@ export const fillEditedGoodTr = (tr, newData) => {
 
   // toDo добавить добавление картинок
   // img
+};
+
+export const getCategoriesServer = async () => {
+  await fetchRequest(categoryUrl, {
+    callback: renderDatalistOption,
+  });
 };
 
 /*

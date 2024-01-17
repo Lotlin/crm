@@ -2,6 +2,7 @@ import {mainTableControl} from './control';
 import {addGoodModalControl} from './addGoodModal/addGoodModalControl';
 import {editGoodModalControl} from './editGoodModal/editGoodModalControl';
 import {errModalControl} from './errModal/errModalControl';
+import {getCategoriesServer} from './service';
 
 
 export const init = () => {
@@ -9,6 +10,7 @@ export const init = () => {
   addGoodModalControl();
   editGoodModalControl();
   errModalControl();
+  getCategoriesServer();
 };
 
 // toDo проверить расчёты цен (+ после отправки данных/получения от сервера);

@@ -20,6 +20,7 @@ export const imgSrcAttribute = 'data-pic';
 const ApiUrl = 'http://localhost:3000';
 export const getGoodsUrl = `${ApiUrl}/api/goods`;
 export const goodUrl = `${ApiUrl}/api/goods/`; // + {id};
+export const categoryUrl = `${ApiUrl}/api/categories`;
 // export const getDiscountedGoodsUrl = `${ApiUrl}/api/discount`;
 export const delGoodUrl = `${ApiUrl}/api/goods/`; // + {id};
 export const getGoodDataUrl = `${ApiUrl}/api/goods/`; // + {id};

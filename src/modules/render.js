@@ -1,6 +1,6 @@
 import {namesOfTableColums, currency, getGoodsUrl} from './data';
 import {parsingNestedObject, cleanMainTable} from './util';
-import {tbodyMainTable, totalPriceElem} from './getElements';
+import {tbodyMainTable, totalPriceElem, body} from './getElements';
 import {
   calculateTotalGoodsCost, getAllGoodsTotalPrice, fetchRequest,
 } from './service';
@@ -65,6 +65,20 @@ const renderDelButton = (elem) => {
   );
 };
 
+export const renderDatalistOption = (obj) => {
+  const categoryNames = Object.values(obj);
+  const categoriesAmount = categoryNames.length;
+  const addGoodCategoriesDataElem = document.createElement('datalist');
+  addGoodCategoriesDataElem.id = 'category-list';
+
+  for (let i = 0; i < categoriesAmount; i++) {
+    const optionElem = document.createElement('option');
+    optionElem.value = categoryNames[i];
+    addGoodCategoriesDataElem.appendChild(optionElem);
+  }
+
+  body.appendChild(addGoodCategoriesDataElem);
+};
 
 export const renderRow = (obj) => {
   const tableRow = document.createElement('tr');

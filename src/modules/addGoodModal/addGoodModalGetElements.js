@@ -23,6 +23,9 @@ export const addGoodPreviewImgDel =
 export const addGoodMessageErrGoodImgMaxSize =
   addGoodModalForm.querySelector('.add-good-form__error-img-size');
 
+// export const addGoodCategoriesDataElem =
+// document.getElementById('addGood-category-list');
+
 export const getAddGoodModalElements = () => {
   const overlay = document.querySelector('.add-good__container');
   const closeButton = overlay.querySelector('.add-good__close-button');

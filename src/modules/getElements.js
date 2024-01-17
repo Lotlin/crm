@@ -1,3 +1,4 @@
+export const body = document.querySelector('body');
 const mainPage = document.querySelector('.goods');
 export const addGoodButton = mainPage.querySelector('.goods__add-good-button');
 export const mainTable = mainPage.querySelector('.goods__table');
