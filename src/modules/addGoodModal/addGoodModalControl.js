@@ -13,7 +13,7 @@ import {renderRow, showAllGoodsTotalPrice} from '../render';
 import {getFormData} from '../util';
 import {fetchRequest} from '../service';
 import {
-  modalDeleteChoosenImgControl, editGoodAddImgInputControl,
+  modalDeleteChoosenImgControl, goodAddImgInputControl,
 } from '../control';
 
 
@@ -78,7 +78,7 @@ const addGoodModalFormControl = () => {
 };
 
 const showAddGoodImgPreviewControl = () => {
-  editGoodAddImgInputControl(
+  goodAddImgInputControl(
       addGoodAddImgInput, addGoodPreviewImg,
       addGoodPreviewImgWrapper, addGoodMessageErrGoodImgMaxSize,
   );

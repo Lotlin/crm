@@ -70,3 +70,5 @@ export const cleanInput = (input) => {
 };
 
 export const getUrlWithGoodId = (url, goodId) => `${url}${goodId}`;
+
+export const setSrcFromData = (imgElem, data) => imgElem.src = data;

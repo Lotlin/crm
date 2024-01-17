@@ -1,8 +1,12 @@
-import {getEditGoodModalElements} from './editGoodModalGetElements';
+import {
+  getEditGoodModalElements, editGoodPreviewImgWrapper, editGoodPreviewImg,
+} from './editGoodModalGetElements';
 import {currency} from '../data';
 import {
   getDiscountSum, getDiscountedPrice, getTotalPrice,
 } from '../addGoodModal/addGoodModalUtil';
+import {showGoodPreviewImg} from '../control';
+import {setSrcFromData} from '../util';
 
 export const fillEditGoodModal = (data) => {
   const elements = getEditGoodModalElements();
@@ -42,6 +46,11 @@ export const fillEditGoodModal = (data) => {
   const discountedPrice = getDiscountedPrice(data.price, discountSum);
   const countedTotalPrice = getTotalPrice(discountedPrice, data.count);
   totalPriceElem.textContent = `${currency}${countedTotalPrice}`;
+
+  if (data.image) {
+    setSrcFromData(editGoodPreviewImg, data.image);
+    showGoodPreviewImg(editGoodPreviewImgWrapper);
+  }
 };
 
 // toDo проверить, не задваивается ли функционал

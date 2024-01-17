@@ -10,7 +10,7 @@ import {getMainTableEditedGoodElementTr} from '../getElements';
 import {fetchRequest, fillEditedGoodTr} from '../service';
 import {goodUrl, imgSrcAttribute} from '../data';
 import {
-  modalDeleteChoosenImgControl, editGoodAddImgInputControl,
+  modalDeleteChoosenImgControl, goodAddImgInputControl,
 } from '../control';
 
 export const openEditGoodModal = () => {
@@ -71,8 +71,8 @@ const editGoodModalFormControl = () => {
   });
 };
 
-const showEditGoodImgPreviewControl = () => {
-  editGoodAddImgInputControl(
+export const showEditGoodImgPreviewControl = () => {
+  goodAddImgInputControl(
       editGoodAddImgInput, editGoodPreviewImg,
       editGoodPreviewImgWrapper, editGoodMessageErrGoodImgMaxSize,
   );

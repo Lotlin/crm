@@ -36,15 +36,15 @@ export const modalDeleteChoosenImgControl =
     });
   };
 
-const showGoodPreviewImg = (elem) => {
+export const showGoodPreviewImg = (elem) => {
   elem.classList.add('form__good-img-preview-wrapper--visible');
 };
 
-const showEditGoodErrorSizeMessage = (messageElem) => {
+const showAddImgErrorSizeMessage = (messageElem) => {
   messageElem.classList.add('form__adding-good-error-img-size--visible');
 };
 
-export const editGoodAddImgInputControl = (
+export const goodAddImgInputControl = (
     addImgInput, imgElem, wrapperElem, messageElem,
 ) => {
   addImgInput.addEventListener('change', () => {
@@ -53,7 +53,7 @@ export const editGoodAddImgInputControl = (
         setPreviewImgSrc(imgElem, addImgInput);
         showGoodPreviewImg(wrapperElem);
       } else {
-        showEditGoodErrorSizeMessage(messageElem);
+        showAddImgErrorSizeMessage(messageElem);
         return true;
       }
     }
