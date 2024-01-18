@@ -1,13 +1,23 @@
-import {errModal} from './errModalGetElements';
+import {
+  errModal, errModalCloseButton, errModalOverlay,
+} from './errModalGetElements';
 
 export const errModalOpen = () => {
   errModal.classList.add('error-modal--visible');
 };
 
 const errModalClose = () => {
-  errModal.classList.remove('error-modal--visible');
+  errModalCloseButton.addEventListener('click', () => {
+    errModal.classList.remove('error-modal--visible');
+  });
+
+  errModalOverlay.addEventListener('click', e => {
+    if (e.target === errModalOverlay) {
+      errModal.classList.remove('error-modal--visible');
+    }
+  });
 };
 
 export const errModalControl = () => {
-  errModalOpen();
+  errModalClose();
 };
