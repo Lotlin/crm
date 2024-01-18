@@ -24,7 +24,7 @@ export const delGoodModalClose = (cancellation = false) => {
   }
 };
 
-export const delGoodConfirmed = (e) => {
+export const delGoodConfirmed = e => {
   const target = e.target;
   let isConfirmed = false;
 

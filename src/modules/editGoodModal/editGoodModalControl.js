@@ -1,8 +1,8 @@
 import {
-  editGoodModal, getEditGoodModalElements, editGoodModalForm,
+  editGoodModal, editGoodModalForm,
   editGoodAddImgInputElem, editGoodIdELem, editGoodPreviewImgWrapper,
-  editGoodPreviewImg, editGoodAddImgInput, editGoodMessageErrGoodImgMaxSize,
-  editGoodpreviewImgDel,
+  editGoodPreviewImg, editGoodMessageErrGoodImgMaxSize,
+  editGoodpreviewImgDel, editGoodModalCloseButton, editGoodModalOverlay,
 } from './editGoodModalGetElements';
 import {getFormData, getUrlWithGoodId} from '../util';
 import {createEditedGood} from './editGoodService';
@@ -18,9 +18,9 @@ export const openEditGoodModal = () => {
 };
 
 const closeEditGoodModal = (goodEdited = false) => {
-  const editGoodModalElements = getEditGoodModalElements();
-  const editGoodModalCloseButton = editGoodModalElements.closeButton;
-  const editGoodModalOverlay = editGoodModalElements.overlay;
+  // const editGoodModalElements = getEditGoodModalElements();
+  // const editGoodModalCloseButton = editGoodModalElements.closeButton;
+  // const editGoodModalOverlay = editGoodModalElements.overlay;
 
   editGoodModalCloseButton.addEventListener('click', () => {
     editGoodModal.classList.remove('edit-good--visible');
@@ -73,11 +73,11 @@ const editGoodModalFormControl = () => {
 
 export const showEditGoodImgPreviewControl = () => {
   goodAddImgInputControl(
-      editGoodAddImgInput, editGoodPreviewImg,
+      editGoodAddImgInputElem, editGoodPreviewImg,
       editGoodPreviewImgWrapper, editGoodMessageErrGoodImgMaxSize,
   );
   modalDeleteChoosenImgControl(
-      editGoodpreviewImgDel, editGoodPreviewImgWrapper, editGoodAddImgInput,
+      editGoodpreviewImgDel, editGoodPreviewImgWrapper, editGoodAddImgInputElem,
   );
 };
 

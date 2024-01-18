@@ -22,10 +22,9 @@ export const addGoodPreviewImgDel =
   overlay.querySelector('.add-good-form__img-preview-del');
 export const addGoodMessageErrGoodImgMaxSize =
   addGoodModalForm.querySelector('.add-good-form__error-img-size');
-
-// export const addGoodCategoriesDataElem =
-// document.getElementById('addGood-category-list');
-
+export const price = overlay.querySelector('[name=addGoodPrice]');
+export const discount = overlay.querySelector('[name=addGoodDiscountInput]');
+/*
 export const getAddGoodModalElements = () => {
   const overlay = document.querySelector('.add-good__container');
   const closeButton = overlay.querySelector('.add-good__close-button');
@@ -58,3 +57,4 @@ export const getAddGoodModalElements = () => {
     addImgInput,
   };
 };
+*/

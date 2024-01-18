@@ -1,21 +1,41 @@
 export const editGoodModal = document.querySelector('.edit-good');
-const overlay = document.querySelector('.edit-good__overlay');
-export const editGoodModalForm = overlay.querySelector('.edit-good-form');
+export const editGoodModalOverlay =
+  document.querySelector('.edit-good__overlay');
+export const editGoodModalForm =
+  editGoodModalOverlay.querySelector('.edit-good-form');
 export const editGoodAddImgInputElem =
-  overlay.querySelector('.edit-good-form__img-input');
-export const editGoodIdELem = overlay.querySelector('.edit-good-id-numbers');
-export const form = overlay.querySelector('.edit-good-form');
-export const editGoodAddImgInput =
-  form.querySelector('.edit-good-form__img-input');
+  editGoodModalOverlay.querySelector('.edit-good-form__img-input');
+export const editGoodIdELem =
+  editGoodModalOverlay.querySelector('.edit-good-id-numbers');
 export const editGoodPreviewImg =
-  overlay.querySelector('.edit-good-form__img-preview');
+  editGoodModalOverlay.querySelector('.edit-good-form__img-preview');
 export const editGoodPreviewImgWrapper =
-  overlay.querySelector('.edit-good-form__img-preview-wrapper');
+  editGoodModalOverlay.querySelector('.edit-good-form__img-preview-wrapper');
 export const editGoodMessageErrGoodImgMaxSize =
   editGoodModalForm.querySelector('.edit-good-form__error-img-size');
 export const editGoodpreviewImgDel =
-  overlay.querySelector('.edit-good-form__img-preview-del');
-
+  editGoodModalOverlay.querySelector('.edit-good-form__img-preview-del');
+export const editGoodModalCloseButton =
+  editGoodModalOverlay.querySelector('.edit-good__close-button');
+export const editGoodTitleElem =
+  editGoodModalOverlay.querySelector('[name=editGoodTitle]');
+export const editGoodModalCategoryElem =
+  editGoodModalOverlay.querySelector('[name=editGoodCategory]');
+export const editGoodModaUnitsElem =
+  editGoodModalOverlay.querySelector('[name=editGoodUnits]');
+export const editGoodModalDiscountCheckboxElem =
+  editGoodModalOverlay.querySelector('.edit-good__discount-checkbox');
+export const editGoodDiscountElem =
+  editGoodModalOverlay.querySelector('[name=editGoodDiscountInput]');
+export const editGoodModalDescriptionElem =
+  editGoodModalOverlay.querySelector('[name=editGoodDescription]');
+export const editGoodModalCountElem =
+  editGoodModalOverlay.querySelector('[name=editGoodAmount]');
+export const editGoodModalPriceElem =
+  editGoodModalOverlay.querySelector('[name=editGoodPrice]');
+export const editGoodModalTotalPriceElem =
+  editGoodModalOverlay.querySelector('.edit-good__total-num');
+/*
 export const getEditGoodModalElements = () => {
   const overlay = document.querySelector('.edit-good__overlay');
   const id = overlay.querySelector('.edit-good-id-numbers');
@@ -52,3 +72,4 @@ export const getEditGoodModalElements = () => {
     // addGoodButton,
   };
 };
+*/

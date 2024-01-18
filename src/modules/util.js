@@ -72,3 +72,21 @@ export const cleanInput = (input) => {
 export const getUrlWithGoodId = (url, goodId) => `${url}${goodId}`;
 
 export const setSrcFromData = (imgElem, data) => imgElem.src = data;
+
+export const getFullPriceFromDiscounted = (discountedPrice, discount) =>
+  (Number(discountedPrice) / (100 - Number(discount))) * 100;
+
+const roundNum = num => Math.round(num * 100) / 100;
+
+export const getDiscountSum = (priceInputValue, discountInputValue) => {
+  const discountSum = Number(discountInputValue) ?
+    ((Number(priceInputValue) * Number(discountInputValue)) / 100) : 0;
+
+  return roundNum(discountSum);
+};
+
+export const getDiscountedPrice = (priceInputValue, dicsountSum) =>
+  roundNum(Number(priceInputValue) - Number(dicsountSum));
+
+export const getTotalPrice = (discountedPrice, amountInputValue) =>
+  roundNum(Number(discountedPrice) * Number(amountInputValue));

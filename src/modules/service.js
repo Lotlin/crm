@@ -2,18 +2,17 @@ import {
   mainTable, getGoodsTotalPrices, getTableRowElements,
 } from './getElements';
 import {
-  currencyNumOfCharscters, delGoodUrl, getGoodDataUrl, categoryUrl,
+  currencyNumOfCharscters, delGoodUrl, getGoodDataUrl, categoryUrl, currency,
 } from './data';
-import {getPictureWindowPosition} from './util';
+import {
+  getPictureWindowPosition, getDiscountSum, getDiscountedPrice, getTotalPrice,
+} from './util';
 import {openEditGoodModal} from './editGoodModal/editGoodModalControl';
 import {
   delGoodModalOpen, delGoodModalClose, delGoodConfirmed,
 } from './delGoodModal/delGoodModalControl';
 import {delGoodModalButtons} from './delGoodModal/delGoodModalGetElements';
 import {fillEditGoodModal} from './editGoodModal/editGoodService';
-import {
-  getDiscountSum, getDiscountedPrice, getTotalPrice,
-} from './addGoodModal/addGoodModalUtil';
 import {showError} from './errModal/errModalService';
 import {renderDatalistOption} from './render';
 
@@ -194,11 +193,8 @@ export const fillEditedGoodTr = (tr, newData) => {
     getTotalPrice(discountedPrice, newData.editGoodAmount);
 
   // mainTable has only 1 column for price
-  trElems.priceElem.textContent = discountedPrice;
-  trElems.totalPriceElem.textContent = totalPrice;
-
-  // toDo добавить добавление картинок
-  // img
+  trElems.priceElem.textContent = `${currency}${discountedPrice}`;
+  trElems.totalPriceElem.textContent = `${currency}${totalPrice}`;
 };
 
 export const getCategoriesServer = async () => {

@@ -1,31 +1,21 @@
-import {getAddGoodModalElements} from './addGoodModalGetElements';
 import {
-  getDiscountSum, getDiscountedPrice, getTotalPrice,
-} from './addGoodModalUtil';
+  price, discount, addGoodModalForm, goodTotalPrice,
+} from './addGoodModalGetElements';
+import {getDiscountSum, getDiscountedPrice} from '../util';
 import {currency} from '../data';
 
-
 export const showAddingGoodTotalPrice = () => {
-  const priceInput = getAddGoodModalElements().price;
-  const amountInput = getAddGoodModalElements().count;
-  const discountInput = getAddGoodModalElements().discount;
-  const form = getAddGoodModalElements().form;
-  const goodTotalPrice = getAddGoodModalElements().totalPrice;
-
   const watchedElements = [
-    priceInput.name,
-    amountInput.name,
-    discountInput.name,
+    price.name,
+    discount.name,
   ];
 
-  form.addEventListener('change', e => {
+  addGoodModalForm.addEventListener('change', e => {
     if (watchedElements.includes(e.target.name)) {
-      const discountSum = getDiscountSum(priceInput.value, discountInput.value);
-      const discountedPrice = getDiscountedPrice(priceInput.value, discountSum);
-      const totalPrice = getTotalPrice(discountedPrice, amountInput.value);
+      const discountSum = getDiscountSum(price.value, discount.value);
+      const totalPrice = getDiscountedPrice(price.value, discountSum);
 
       goodTotalPrice.textContent = `${currency}${totalPrice}`;
     }
   });
 };
-

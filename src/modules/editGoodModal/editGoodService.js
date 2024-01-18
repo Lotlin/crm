@@ -1,53 +1,49 @@
 import {
-  getEditGoodModalElements, editGoodPreviewImgWrapper, editGoodPreviewImg,
+  editGoodPreviewImgWrapper, editGoodPreviewImg, editGoodAddImgInputElem,
+  editGoodIdELem, editGoodTitleElem, editGoodModaUnitsElem,
+  editGoodModalDiscountCheckboxElem, editGoodModalCategoryElem,
+  editGoodDiscountElem, editGoodModalDescriptionElem, editGoodModalCountElem,
+  editGoodModalPriceElem, editGoodModalTotalPriceElem, editGoodModalForm,
 } from './editGoodModalGetElements';
 import {currency} from '../data';
-import {
-  getDiscountSum, getDiscountedPrice, getTotalPrice,
-} from '../addGoodModal/addGoodModalUtil';
 import {showGoodPreviewImg} from '../control';
-import {setSrcFromData} from '../util';
+import {
+  setSrcFromData, getFullPriceFromDiscounted, getDiscountSum,
+  getDiscountedPrice,
+} from '../util';
 
 export const fillEditGoodModal = (data) => {
-  const elements = getEditGoodModalElements();
+  editGoodAddImgInputElem.setAttribute('data-pic', data.image);
+  editGoodIdELem.textContent = data.id;
+  editGoodTitleElem.value = data.title;
+  editGoodModalCategoryElem.value = data.category;
+  editGoodModaUnitsElem.value = data.units;
+  editGoodModalDiscountCheckboxElem.setAttribute('checked', true);
+  editGoodDiscountElem.value = data.discount ? data.discount : 0;
+  editGoodModalDescriptionElem.value = data.description;
+  editGoodModalCountElem.value = data.count;
+  // show full price
+  editGoodModalPriceElem.value =
+    getFullPriceFromDiscounted(data.price, data.discount);
+  editGoodModalTotalPriceElem.textContent = `${currency}${data.price}`;
 
-  const imgElem = elements.addImgInput;
-  imgElem.setAttribute('data-pic', data.image);
+  const watchedElements = [
+    editGoodModalPriceElem.name,
+    editGoodDiscountElem.name,
+  ];
 
-  const idelem = elements.id;
-  idelem.textContent = data.id;
+  editGoodModalForm.addEventListener('change', e => {
+    if (watchedElements.includes(e.target.name)) {
+      const discountSum =
+        getDiscountSum(
+            editGoodModalPriceElem.value, editGoodDiscountElem.value);
+      const totalPrice =
+        getDiscountedPrice(editGoodModalPriceElem.value, discountSum);
+      editGoodModalTotalPriceElem.textContent = `${currency}${totalPrice}`;
+    }
+  });
 
-  const titleElem = elements.title;
-  titleElem.value = data.title;
-
-  const categoryElem = elements.category;
-  categoryElem.value = data.category;
-
-  const unitsElem = elements.units;
-  unitsElem.value = data.units;
-
-  const discountCheckboxElem = elements.discountCheckbox;
-  discountCheckboxElem.setAttribute('checked', true);
-
-  const discountInputElem = elements.discount;
-  discountInputElem.value = data.discount ? data.discount : 0;
-
-  const descriptionElem = elements.description;
-  descriptionElem.value = data.description;
-
-  const countElem = elements.count;
-  countElem.value = data.count;
-
-  const priceElem = elements.price;
-  priceElem.value = data.price;
-
-  const totalPriceElem = elements.totalPrice;
-  const discountSum = getDiscountSum(data.price, data.discount);
-  const discountedPrice = getDiscountedPrice(data.price, discountSum);
-  const countedTotalPrice = getTotalPrice(discountedPrice, data.count);
-  totalPriceElem.textContent = `${currency}${countedTotalPrice}`;
-
-  if (data.image) {
+  if (data.image && data.image !== 'image/notimage.jpg') {
     setSrcFromData(editGoodPreviewImg, data.image);
     showGoodPreviewImg(editGoodPreviewImgWrapper);
   }
@@ -55,8 +51,6 @@ export const fillEditGoodModal = (data) => {
 
 // toDo проверить, не задваивается ли функционал
 export const createEditedGood = (newGoodData) => {
-  // const idElem = getEditGoodModalElements().id.textContent;
-  // const id = idElem;
   const title = newGoodData.editGoodTitle;
   const description = newGoodData.editGoodDescription;
   const category = newGoodData.editGoodCategory;
@@ -67,7 +61,7 @@ export const createEditedGood = (newGoodData) => {
 
   const discountSize = getDiscountSum(fullPrice, discountPercent);
   const discountedPrice = getDiscountedPrice(fullPrice, discountSize);
-  // const totalPrice = getTotalPrice(discountedPrice, count);
+
   // main table doesn't have column for discountedPrice
   const price = Number(discountedPrice);
   const image = newGoodData.images;
@@ -76,7 +70,7 @@ export const createEditedGood = (newGoodData) => {
     title,
     description,
     price,
-    discountPercent,
+    discount: discountPercent,
     count,
     units,
     image,

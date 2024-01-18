@@ -7,4 +7,3 @@ export const delGoodModalButtons =
   delGoodModalOverlay.querySelector('.del-good-modal__button-wrapper');
 export const delGoodModalButtonYes =
   delGoodModalOverlay.querySelector('.del-good-modal__button-yes');
-

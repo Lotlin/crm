@@ -1,6 +1,6 @@
 import {
   getDiscountSum, getDiscountedPrice, getTotalPrice,
-} from './addGoodModalUtil';
+} from '../util';
 
 
 export const createNewGood = (newGoodData) => {
