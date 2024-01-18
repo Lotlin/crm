@@ -1,9 +1,7 @@
 import {
   mainTable, getGoodsTotalPrices, getTableRowElements,
 } from './getElements';
-import {
-  currencyNumOfCharscters, delGoodUrl, getGoodDataUrl, categoryUrl, currency,
-} from './data';
+import {apiMainUrl, categoryUrl, currency} from './data';
 import {
   getPictureWindowPosition, getDiscountSum, getDiscountedPrice, getTotalPrice,
 } from './util';
@@ -78,7 +76,7 @@ export const getAllGoodsTotalPrice = () => {
   let sumAllPrices = 0;
 
   allPricesTextContent.forEach(elem => {
-    const price = Number(elem.textContent.slice(currencyNumOfCharscters));
+    const price = Number(elem.textContent.slice(currency.length));
     sumAllPrices += price;
   });
 
@@ -95,7 +93,7 @@ export const deleteGood = () => {
         if (delGoodConfirmed(e)) {
           target.closest('.good').remove();
           const idDeleted = target.closest('.good').childNodes[0].innerText;
-          const url = `${delGoodUrl}${idDeleted}`;
+          const url = `${apiMainUrl}/${idDeleted}`;
           fetchRequest(url, {
             method: 'DELETE',
           });
@@ -135,7 +133,7 @@ const getEditedGoogId = (target) => {
 };
 
 const fillEditGoodModalGoodData = async (goodId) => {
-  const url = `${getGoodDataUrl}${goodId}`;
+  const url = `${apiMainUrl}/${goodId}`;
 
   await fetchRequest(url, {
     callback: fillEditGoodModal,
@@ -171,7 +169,6 @@ export const editGood = () => {
       const editedGoodId = getEditedGoogId(target);
       openEditGoodModal();
       fillEditGoodModalGoodData(editedGoodId);
-      // перенести в ф-ю после нажатия кнопки 'добавить товар'
       getEditedGoodMainTableElements(target);
     }
   });
@@ -202,12 +199,3 @@ export const getCategoriesServer = async () => {
     callback: renderDatalistOption,
   });
 };
-
-/*
-export const getDiscountedGoods = async () => {
-  cleanMainTable();
-  await fetchRequest(getDiscountedGoodsUrl, {
-    callback: renderMainGoods,
-  });
-};
-*/

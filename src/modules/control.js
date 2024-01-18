@@ -63,7 +63,6 @@ export const goodAddImgInputControl = (
 export const mainTableControl = () => {
   loadGoods();
   deleteGood();
-  // showAllGoodsTotalPrice();
   showGoodPicture(mainTable, mainTablePicWidth, mainTablePicHeight);
   editGood();
   inputSearchControl();

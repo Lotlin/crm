@@ -8,10 +8,11 @@ import {getFormData, getUrlWithGoodId} from '../util';
 import {createEditedGood} from './editGoodService';
 import {getMainTableEditedGoodElementTr} from '../getElements';
 import {fetchRequest, fillEditedGoodTr} from '../service';
-import {goodUrl, imgSrcAttribute} from '../data';
+import {apiMainUrl, imgSrcAttribute} from '../data';
 import {
   modalDeleteChoosenImgControl, goodAddImgInputControl,
 } from '../control';
+import {showAllGoodsTotalPrice} from '../render';
 
 export const openEditGoodModal = () => {
   editGoodModal.classList.add('edit-good--visible');
@@ -62,12 +63,13 @@ const editGoodModalFormControl = () => {
         getMainTableEditedGoodElementTr(getIdEditedElem()),
         editedGoodData);
 
-    fetchRequest(getUrlWithGoodId(goodUrl, getIdEditedElem()), {
+    fetchRequest(getUrlWithGoodId(apiMainUrl, getIdEditedElem()), {
       method: 'PATCH',
       body: createEditedGood(editedGoodData),
     });
 
     closeEditGoodModal('goodEdited');
+    showAllGoodsTotalPrice();
   });
 };
 

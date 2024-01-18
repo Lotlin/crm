@@ -6,7 +6,7 @@ import {
   addGoodMessageErrGoodImgMaxSize, addGoodPreviewImgWrapper, addGoodPreviewImg,
   addGoodPreviewImgDel,
 } from './addGoodModalGetElements';
-import {currency, getGoodsUrl} from '../data';
+import {currency, apiMainUrl} from '../data';
 import {showAddingGoodTotalPrice} from './addGoodModalRender';
 import {createNewGood} from './addGoodModalService';
 import {renderRow, showAllGoodsTotalPrice} from '../render';
@@ -67,7 +67,7 @@ const addGoodModalFormControl = () => {
     mainTable.appendChild(newRow);
     showAllGoodsTotalPrice();
 
-    fetchRequest(getGoodsUrl, {
+    fetchRequest(apiMainUrl, {
       method: 'POST',
       body: newGood,
     });

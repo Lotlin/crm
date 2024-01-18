@@ -49,7 +49,6 @@ export const fillEditGoodModal = (data) => {
   }
 };
 
-// toDo проверить, не задваивается ли функционал
 export const createEditedGood = (newGoodData) => {
   const title = newGoodData.editGoodTitle;
   const description = newGoodData.editGoodDescription;

@@ -1,4 +1,4 @@
-import {namesOfTableColums, currency, getGoodsUrl} from './data';
+import {namesOfTableColums, currency, apiMainUrl} from './data';
 import {parsingNestedObject, cleanMainTable} from './util';
 import {tbodyMainTable, totalPriceElem, body} from './getElements';
 import {
@@ -148,7 +148,7 @@ export const showAllGoodsTotalPrice = () => {
 };
 
 export const loadGoods = async () => {
-  await fetchRequest(getGoodsUrl, {
+  await fetchRequest(apiMainUrl, {
     callback: renderMainGoods,
   });
 
