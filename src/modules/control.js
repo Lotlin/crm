@@ -39,7 +39,7 @@ const inputSearchControl = async () => {
   inputSearch.addEventListener('input', searchDeboune);
 };
 
-const hideGoodPreviewImg = (elem) => {
+export const hideGoodPreviewImg = (elem) => {
   elem.classList.remove('form__good-img-preview-wrapper--visible');
 };
 

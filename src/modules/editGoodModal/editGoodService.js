@@ -5,15 +5,15 @@ import {
   editGoodDiscountElem, editGoodModalDescriptionElem, editGoodModalCountElem,
   editGoodModalPriceElem, editGoodModalTotalPriceElem, editGoodModalForm,
 } from './editGoodModalGetElements';
-import {currency} from '../data';
-import {showGoodPreviewImg} from '../control';
+import {currency, imgSrcAttribute} from '../data';
+import {showGoodPreviewImg, hideGoodPreviewImg} from '../control';
 import {
   setSrcFromData, getFullPriceFromDiscounted, getDiscountSum,
   getDiscountedPrice,
 } from '../util';
 
 export const fillEditGoodModal = (data) => {
-  editGoodAddImgInputElem.setAttribute('data-pic', data.image);
+  editGoodAddImgInputElem.setAttribute(imgSrcAttribute, data.image);
   editGoodIdELem.textContent = data.id;
   editGoodTitleElem.value = data.title;
   editGoodModalCategoryElem.value = data.category;
@@ -46,6 +46,8 @@ export const fillEditGoodModal = (data) => {
   if (data.image && data.image !== 'image/notimage.jpg') {
     setSrcFromData(editGoodPreviewImg, data.image);
     showGoodPreviewImg(editGoodPreviewImgWrapper);
+  } else {
+    hideGoodPreviewImg(editGoodPreviewImgWrapper);
   }
 };
 

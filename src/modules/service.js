@@ -1,7 +1,7 @@
 import {
   mainTable, getGoodsTotalPrices, getTableRowElements,
 } from './getElements';
-import {apiMainUrl, categoryUrl, currency} from './data';
+import {apiMainUrl, categoryUrl, currency, imgSrcAttribute} from './data';
 import {
   getPictureWindowPosition, getDiscountSum, getDiscountedPrice, getTotalPrice,
 } from './util';
@@ -113,8 +113,8 @@ export const showGoodPicture =
     mainTable.addEventListener('click', e => {
       const target = e.target;
 
-      if (target.hasAttribute('data-pic')) {
-        const link = target.getAttribute('data-pic');
+      if (target.hasAttribute(imgSrcAttribute)) {
+        const link = target.getAttribute(imgSrcAttribute);
         const picturePosition =
           getPictureWindowPosition(mainTablePicWidth, mainTablePicHeight);
         open(`${link}`, '',

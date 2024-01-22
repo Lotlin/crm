@@ -1,4 +1,6 @@
-import {namesOfTableColums, currency, apiMainUrl} from './data';
+import {
+  namesOfTableColums, currency, apiMainUrl, imgSrcAttribute,
+} from './data';
 import {parsingNestedObject, cleanMainTable} from './util';
 import {tbodyMainTable, totalPriceElem, body} from './getElements';
 import {
@@ -21,7 +23,7 @@ const renderImgString = (imgValue) => {
     resultHtml = `
       <td class="goods__table-img">
         <button class="goods__table-button goods__table-button-img
-          goods__picture" data-pic="${imgValue[0]}">
+          goods__picture" ${imgSrcAttribute}="${imgValue[0]}">
         </button>
       </td>`;
   } else if (imgValue === 'image/notimage.jpg' || !imgValue) {
@@ -33,7 +35,7 @@ const renderImgString = (imgValue) => {
     resultHtml = `
       <td class="goods__table-img">
         <button class="goods__table-button goods__table-button-img
-          goods__picture" data-pic="${imgValue}">
+          goods__picture" ${imgSrcAttribute}="${imgValue}">
         </button>
       </td>`;
   }
