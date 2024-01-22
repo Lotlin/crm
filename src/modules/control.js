@@ -10,18 +10,33 @@ import {
   cleanInput, isInputContainFile, isImgFileSizeCorrect, setPreviewImgSrc,
 } from './util';
 
-const inputSearchControl = async () => {
-  inputSearch.addEventListener('change', () => {
-    setTimeout(async () => {
-      const url = inputSearch.value;
+const debounce = (fn, msec) => {
+  let lastCall = 0;
+  let lastCallTimer = NaN;
 
-      await fetchRequest(url, {
-        callback: renderMainGoods,
-      });
-    }, timeOut);
+  return (...args) => {
+    const previousCall = lastCall;
+    lastCall = Date.now();
 
-    inputSearch.value = '';
+    if (previousCall && ((lastCall - previousCall) <= msec)) {
+      clearTimeout(lastCallTimer);
+    }
+
+    lastCallTimer = setTimeout(() => fn(...args), msec);
+  };
+};
+
+const renderSearchingGoods = async () => {
+  const url = inputSearch.value;
+  await fetchRequest(url, {
+    callback: renderMainGoods,
   });
+};
+
+const searchDeboune = debounce(renderSearchingGoods, timeOut);
+
+const inputSearchControl = async () => {
+  inputSearch.addEventListener('input', searchDeboune);
 };
 
 const hideGoodPreviewImg = (elem) => {
