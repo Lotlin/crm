@@ -104,10 +104,6 @@
             <span class="form__span">Категория</span>
             <input class="form__input" type="text" name="addGoodCategory" list="category-list" tabindex="-1" required>
           </label>
-
-          <!-- <datalist class="form__datalist" id="addGood-category-list">
-
-          </datalist>-->
             
           <label class="form__label form__label-units" tabindex="0">
             <span class="form__span">Единицы измерения</span>
@@ -174,17 +170,17 @@
         <form class="form edit-good-form" id="edit-goodForm" action="#" method="post" enctype="multipart/form-data">
           <label class="form__label form__label-name" tabindex="0">
             <span class="form__span">Наименование</span>
-            <input class="form__input" type="text" name="editGoodTitle" tabindex="-1">
+            <input class="form__input" type="text" name="editGoodTitle" tabindex="-1" required>
           </label>
           
           <label class="form__label form__label-category" tabindex="0">
             <span class="form__span">Категория</span>
-            <input class="form__input" type="text" name="editGoodCategory" list="category-list" tabindex="-1">
+            <input class="form__input" type="text" name="editGoodCategory" list="category-list" tabindex="-1" required>
           </label>
           
           <label class="form__label form__label-units" tabindex="0">
             <span class="form__span">Единицы измерения</span>
-            <input class="form__input" type="text" name="editGoodUnits" tabindex="-1">
+            <input class="form__input" type="text" name="editGoodUnits" tabindex="-1" required>
           </label>
         
           <div class="form__discount-wrapper">
@@ -194,23 +190,23 @@
             </label>
             
             <label class="form__label-discount" tabindex="0">
-              <input class="form__discount-input" type="text" name="editGoodDiscountInput" tabindex="-1">
+              <input class="form__discount-input" type="number" name="editGoodDiscountInput"  min="0" max="100" tabindex="-1">
             </label>
           </div>
         
           <label class="form__label form__label-description" tabindex="0">
             <span class="form__span">Описание</span>
-            <textarea class="form__textarea" name="editGoodDescription" tabindex="-1"></textarea>
+            <textarea class="form__textarea" name="editGoodDescription" tabindex="-1" required></textarea>
           </label>
           
           <label class="form__label form__label-amount" tabindex="0">
             <span class="form__span">Количество</span>
-            <input class="form__input" type="text" name="editGoodAmount" tabindex="-1">
+            <input class="form__input" type="number" name="editGoodAmount" tabindex="-1" required>
           </label>
           
           <label class="form__label form__label-price" tabindex="0">
             <span class="form__span">Цена</span>
-            <input class="form__input" type="text" name="editGoodPrice" tabindex="-1">
+            <input class="form__input" type="number" name="editGoodPrice" tabindex="-1" required>
           </label>
         
           <label class="form__adding-good-label" tabindex="0">
